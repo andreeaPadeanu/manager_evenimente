@@ -1,0 +1,71 @@
+
+/* #f4f1de alb
+#eab69f roz deschis
+#e07a5f roz inchis
+#3d405b albastru
+#81b29a verde
+#f2cc8f galben
+*/
+body {
+  font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #3d405b, #e07a5f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.login {
+  width: 300px;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: #eab69f;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.register {
+  width: 300px;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: #eab69f;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #3d405b;
+}
+
+form {
+  margin-top: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  background-color: #3d405b;
+  color: #f4f1de;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #e07a5f;
+}
+
+a {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  color: #3d405b;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #e07a5f;
+}

@@ -2,10 +2,14 @@
 <html>
 
 <head>
+
+<link href="style.css" rel="stylesheet" type="text/css">
+
     <title>Înregistrare</title>
 </head>
 
 <body>
+    <div class="register">
     <h2>Înregistrare</h2>
     <?php
     require('config.php');
@@ -38,6 +42,7 @@
     <br>
 
     <a href="login.php">Înapoi la pagina de conectare</a>
+    </div>
 </body>
 
 </html>

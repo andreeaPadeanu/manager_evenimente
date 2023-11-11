@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (password_verify($parola, $parola_db)) {
             // Parola este corectă
             $_SESSION['user_id'] = $user_id;
-            header("Location: conectare_reusita.php");
+            header("Location: conect_reusit.php");
             exit();
         } else {
             $mesaj_eroare = "Autentificare eșuată. Vă rugăm să verificați emailul și parola.";
@@ -50,10 +50,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html>
 
 <head>
+    <link href="style.css" rel="stylesheet" type="text/css">
     <title>Conectare și Înregistrare</title>
+    
 </head>
 
 <body>
+    <div class="login">
     <h2>Conectare</h2>
     <?php
     if (isset($mesaj_eroare)) {
@@ -68,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <!-- Buton pentru înregistrare -->
     <a href="register.php">Înregistrează-te</a>
+</div>
 </body>
 
 </html>
