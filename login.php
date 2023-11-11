@@ -4,7 +4,7 @@ session_start();
 
 // Verificați dacă utilizatorul este deja autentificat
 if (isset($_SESSION['user_id'])) {
-    header("Location: conect_reusit.php");
+    header("Location:index.php");
     exit();
 }
 
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (password_verify($parola, $parola_db)) {
             // Parola este corectă
             $_SESSION['user_id'] = $user_id;
-            header("Location: conect_reusit.php");
+            header("Location: index.php");
             exit();
         } else {
             $mesaj_eroare = "Autentificare eșuată. Vă rugăm să verificați emailul și parola.";
@@ -52,26 +52,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <link href="style.css" rel="stylesheet" type="text/css">
     <title>Conectare și Înregistrare</title>
-    
+
 </head>
 
 <body>
     <div class="login">
-    <h2>Conectare</h2>
-    <?php
-    if (isset($mesaj_eroare)) {
-        echo '<p style="color: red;">' . $mesaj_eroare . '</p>';
-    }
-    ?>
-    <form method="post" action="login.php">
-        Email: <input type="text" name="email" required><br>
-        Parola: <input type="password" name="parola" required><br>
-        <input type="submit" name="conectare" value="Conectare">
-    </form>
+        <h2>Conectare</h2>
+        <?php
+        if (isset($mesaj_eroare)) {
+            echo '<p style="color: red;">' . $mesaj_eroare . '</p>';
+        }
+        ?>
+        <form method="post" action="login.php">
+            Email: <input type="text" name="email" required><br>
+            Parola: <input type="password" name="parola" required><br>
+            <input type="submit" name="conectare" value="Conectare">
+        </form>
 
-    <!-- Buton pentru înregistrare -->
-    <a href="register.php">Înregistrează-te</a>
-</div>
+        <!-- Buton pentru înregistrare -->
+        <a href="register.php">Înregistrează-te</a>
+    </div>
 </body>
 
 </html>

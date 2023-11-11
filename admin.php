@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <!-- Formular pentru ștergerea de evenimente -->
     <h3>Stergere Eveniment</h3>
-    <form method="post" action="admin.php">
+    <form method="post" action="sterge_eveniment.php">
         <!-- Adăugați aici câmpurile necesare pentru ștergerea unui eveniment -->
         <input type="submit" name="sterge_eveniment" value="Șterge Eveniment">
     </form>
@@ -58,11 +58,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="submit" name="Adauga administrator nou" value="Adauga administrator nou">
     </form>
     <h3>Adaugare Speaker</h3>
-    <form method="post" action="speaker.php">
+    <form method="post" action="adauga_speaker.php">
         <!-- Adăugați aici câmpurile necesare pentru ștergerea unui eveniment -->
         <input type="submit" name="Adauga speaker nou" value="Adauga speaker nou">
     </form>
-
+    <h3>Adaugare Sponsor</h3>
+    <form method="post" action="adauga_sponsor.php">
+        <!-- Adăugați aici câmpurile necesare pentru ștergerea unui eveniment -->
+        <input type="submit" name="Adauga sponsor nou" value="Adauga sponsor nou">
+    </form>
+    <h3>Adaugare Partener</h3>
+    <form method="post" action="adauga_partener.php">
+        <!-- Adăugați aici câmpurile necesare pentru ștergerea unui eveniment -->
+        <input type="submit" name="Adauga partener nou" value="Adauga partener nou">
+    </form>
+    <h3>Trimite invitatii la evenimente</h3>
+    <form method="post" action="trimite_invitatie.php">
+        <!-- Adăugați aici câmpurile necesare pentru ștergerea unui eveniment -->
+        <input type="submit" name="Trimite invitatii " value="Trimite invitatii ">
+    </form>
     <a href="logout.php">Deconectare</a>
 
 </body>
