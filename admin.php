@@ -33,15 +33,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <p>Bine ați venit, Administrator!</p>
 
     <!-- Formular pentru adăugarea de evenimente -->
-    <h3>Adaugare Eveniment</h3>
-    <form method="post" action="admin.php">
+    <h3>Adăugare Eveniment</h3>
+    <form method="post" action="adauga_eveniment.php">
         <!-- Adăugați aici câmpurile necesare pentru adăugarea unui eveniment -->
         <input type="submit" name="adauga_eveniment" value="Adaugă Eveniment">
     </form>
 
     <!-- Formular pentru editarea de evenimente -->
     <h3>Editare Eveniment</h3>
-    <form method="post" action="admin.php">
+    <form method="post" action="editare_eveniment.php">
         <!-- Adăugați aici câmpurile necesare pentru editarea unui eveniment -->
         <input type="submit" name="editeaza_eveniment" value="Editează Eveniment">
     </form>
@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <h3>Adaugare Speaker</h3>
     <form method="post" action="speaker.php">
         <!-- Adăugați aici câmpurile necesare pentru ștergerea unui eveniment -->
-        <input type="submit" name="Adauga administrator nou" value="Adauga administrator nou">
+        <input type="submit" name="Adauga speaker nou" value="Adauga speaker nou">
     </form>
 
     <a href="logout.php">Deconectare</a>
