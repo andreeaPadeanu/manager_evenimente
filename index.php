@@ -1,86 +1,51 @@
+<?php
+require('config.php');
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+
+// Obține evenimentele și tipurile de bilete din baza de date
+$query_evenimente = "SELECT E.ID_eveniment, E.Nume_eveniment, E.Data, E.Ora, E.Locatie, E.Descriere_eveniment, TB.Tip_bilet
+                    FROM Eveniment E
+                    LEFT JOIN Tip_Bilet TB ON E.ID_tip_bilet = TB.ID_tip_bilet";
+$result_evenimente = $conn->query($query_evenimente);
+?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-
-        header {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-        }
-
-        .container {
-            background-color: white;
-            margin: 20px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .menu {
-            background-color: #0070cc;
-            color: white;
-            padding: 10px;
-        }
-
-        .menu ul {
-            list-style-type: none;
-            padding: 0;
-            text-align: center;
-            /* Centrare */
-        }
-
-        .menu ul li {
-            display: inline;
-            margin-right: 20px;
-        }
-
-        .content {
-            margin: 20px 0;
-            padding: 20px;
-        }
-
-        .footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            clear: both;
-        }
-
-        .footer p {
-            margin: 0;
-        }
-
-        a {
-            color: white;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .top-right-menu {
-            text-align: right;
-            padding: 10px;
-        }
+        /* Stilizare pentru pagina de evenimente */
     </style>
+    <script>
+        // Script JavaScript pentru adăugarea în coș fără a naviga la altă pagină
+        function adaugaInCos(evenimentId) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "adauga_cos.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    // Afișează răspunsul primit de la server
+                    alert(this.responseText);
+                }
+            };
+            xhttp.send("eveniment_id=" + evenimentId);
+        }
+    </script>
 </head>
 
 <body>
     <header>
         <div class="top-right-menu">
-            <a href="#">Acasă</a>
-            <a href="#">Cos</a>
-            <a href="notificari.php">Notificari</a>
+            <a href="index.php">Acasă</a>
+            <a href="cos.php">Coș</a>
+            <a href="notificari.php">Notificări</a>
             <a href="contul_meu.php">Contul Meu</a>
             <a href="logout.php">Deconectare</a>
         </div>
@@ -89,16 +54,33 @@
     <div class="container">
         <div class="menu">
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="#">Evenimente viitoare</a></li>
                 <li><a href="#">Categorii</a></li>
                 <li><a href="#">Oferte speciale</a></li>
             </ul>
         </div>
         <div class="content">
-            <!-- Aici adăugați conținutul paginii principale -->
-            <h2>Acasă</h2>
-            <!-- Aici puteți adăuga conținutul paginii principale -->
+            <h2>Evenimente disponibile</h2>
+
+            <div class="container">
+                <?php
+                // Afișează evenimentele
+                while ($row = $result_evenimente->fetch_assoc()) {
+                    echo "<div class='eveniment'>";
+                    echo "<h3>" . $row['Nume_eveniment'] . "</h3>";
+                    echo "<p>Data: " . $row['Data'] . ", Ora: " . $row['Ora'] . "</p>";
+                    echo "<p>Locație: " . $row['Locatie'] . "</p>";
+                    echo "<p>Descriere: " . $row['Descriere_eveniment'] . "</p>";
+                    echo "<p>Tip bilet: " . $row['Tip_bilet'] . "</p>";
+
+                    // Link pentru a adăuga în coș folosind scriptul JavaScript
+                    echo "<a href='javascript:void(0)' onclick='adaugaInCos(" . $row['ID_eveniment'] . ")'>Adaugă în coș</a>";
+
+                    echo "</div>";
+                }
+                ?>
+            </div>
         </div>
     </div>
     <div class="footer">
