@@ -49,28 +49,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!DOCTYPE html>
 <html>
 
+<html>
+
 <head>
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="login.css" rel="stylesheet" type="text/css">
     <title>Conectare și Înregistrare</title>
 
 </head>
 
 <body>
     <div class="login">
-        <h2>Conectare</h2>
+        <h2>LOG IN</h2>
         <?php
         if (isset($mesaj_eroare)) {
             echo '<p style="color: red;">' . $mesaj_eroare . '</p>';
         }
         ?>
         <form method="post" action="login.php">
-            Email: <input type="text" name="email" required><br>
-            Parola: <input type="password" name="parola" required><br>
+            <input type="text" name="email" placeholder="email" required><br>
+            <input type="password" name="parola" placeholder="parola" required><br>
             <input type="submit" name="conectare" value="Conectare">
         </form>
 
         <!-- Buton pentru înregistrare -->
-        <a href="register.php">Înregistrează-te</a>
+        <a href="register.php" class="register">Înregistrează-te</a>
     </div>
 </body>
 

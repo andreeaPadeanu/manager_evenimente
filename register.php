@@ -3,7 +3,7 @@
 
 <head>
 
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="register.css" rel="stylesheet" type="text/css">
 
     <title>Înregistrare</title>
 </head>
@@ -33,11 +33,11 @@
         ?>
 
         <form method="post" action="register.php">
-            Nume: <input type="text" name="nume" required><br>
-            Prenume: <input type="text" name="prenume" required><br>
-            Email: <input type="text" name="email" required><br>
-            Parola: <input type="password" name="parola" required><br>
-            <input type="submit" value="Înregistrare">
+            <input type="text" name="nume" required placeholder="Nume"><br>
+            <input type="text" name="prenume" required placeholder="Prenume"><br>
+            <input type="text" name="email" required placeholder="Email"><br>
+            <input type="password" name="parola" required placeholder="Parola"><br>
+            <input type="submit" value="Înregistreaza-te">
         </form>
         <br>
 

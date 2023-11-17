@@ -1,0 +1,97 @@
+
+/* #f4f1de alb
+#eab69f roz deschis
+#e07a5f roz inchis
+#3d405b albastru
+#81b29a verde
+#f2cc8f galben
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    scroll-behavior: smooth;
+    background-color: #3d405b;
+    font-family: sans-serif;
+}
+
+.register {
+    width: 350px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #191919;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.register h2 {
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.register input[type="text"],
+.register input[type="password"] {
+    background-color: transparent;
+    display: block;
+    border: 0;
+    border-radius: 24px;
+    border: 2px solid #3d405b;
+    outline: none;
+    margin: 20px auto;
+    padding: 12px 10px;
+    text-align: center;
+    width: 200px;
+    font-size: 16px;
+    color: #fff;
+    transition: 0.25s;
+}
+
+.register input[type="text"]:focus,
+.register input[type="password"]:focus {
+    width: 260px;
+    border: 2px solid #eab69f;
+}
+
+.register input[type="submit"] {
+    background-color: transparent;
+    display: block;
+    border: 0;
+    border-radius: 24px;
+    border: 2px solid #eab69f;
+    outline: none;
+    margin: 20px auto;
+    padding: 12px 10px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 180px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    transition: 0.25s;
+}
+
+.register input[type="submit"]:hover {
+    width: 200px;
+    background-color: #eab69f;
+}
+
+.register a {
+    display: block;
+    color: #3d405b; 
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.register a:hover {
+    color: #eab69f; 
+}
