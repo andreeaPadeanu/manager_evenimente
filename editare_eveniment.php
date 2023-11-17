@@ -27,23 +27,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (isset($_POST['salveaza_editare'])) {
-        $evenimentID = $_POST['eveniment_id']; // Aici obținem ID-ul evenimentului care urmează să fie actualizat
+        $evenimentID = $_POST['eveniment_id'];
 
-        // Obține valorile introduse de utilizator pentru câmpurile de editare
         $nume_eveniment_nou = $_POST['nume_eveniment'];
         $data_noua = $_POST['data'];
         $ora_noua = $_POST['ora'];
         $tip_nou = $_POST['tip'];
         $locatie_noua = $_POST['locatie'];
         $descriere_noua = $_POST['descriere'];
+        $pret_nou = $_POST['pret'];
 
-        // Actualizează datele evenimentului în baza de date
-        $query = "UPDATE Eveniment SET Nume_eveniment = ?, Data = ?, Ora = ?, Tip = ?, Locatie = ?, Descriere_eveniment = ? WHERE ID_eveniment = ?";
+        $query = "UPDATE Eveniment SET Nume_eveniment = ?, Data = ?, Ora = ?, Tip = ?, Locatie = ?, Descriere_eveniment = ?, Pret = ? WHERE ID_eveniment = ?";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("ssssssi", $nume_eveniment_nou, $data_noua, $ora_noua, $tip_nou, $locatie_noua, $descriere_noua, $evenimentID);
+        $stmt->bind_param("ssssssdi", $nume_eveniment_nou, $data_noua, $ora_noua, $tip_nou, $locatie_noua, $descriere_noua, $pret_nou, $evenimentID);
 
         if ($stmt->execute()) {
-            // Redirecționează utilizatorul către o pagină de succes sau afișează un mesaj de succes
             echo "Modificările au fost salvate cu succes!";
         } else {
             echo "Eroare la salvarea modificărilor.";
@@ -53,25 +51,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 $detalii_eveniment = array();
 
-// Obține datele evenimentului selectat din baza de date
 if (!is_null($evenimentID)) {
     $query = "SELECT * FROM Eveniment WHERE ID_eveniment = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $evenimentID);
     $stmt->execute();
-    $stmt->bind_result($id_eveniment, $nume_eveniment, $data, $ora, $tip, $locatie, $descriere, $id_tip_bilet, $id_sponsor, $id_speaker, $id_partener);
-    $stmt->fetch();
+    $result = $stmt->get_result();
 
-    // Salvează datele într-un array pentru a le afișa ulterior
-    $detalii_eveniment = array(
-        'Nume_eveniment' => $nume_eveniment,
-        'Data' => $data,
-        'Ora' => $ora,
-        'Tip' => $tip,
-        'Locatie' => $locatie,
-        'Descriere' => $descriere,
-        // Adaugă aici și celelalte informații ale evenimentului (ID_tip_bilet, ID_sponsor, ID_speaker, ID_partener)
-    );
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+
+        $detalii_eveniment = array(
+            'Nume_eveniment' => $row['Nume_eveniment'],
+            'Data' => $row['Data'],
+            'Ora' => $row['Ora'],
+            'Tip' => $row['Tip'],
+            'Locatie' => $row['Locatie'],
+            'Descriere' => $row['Descriere_eveniment'],
+            'Pret' => $row['Pret'],
+            'ID_sponsor' => $row['ID_sponsor'],
+            'ID_speaker' => $row['ID_speaker'],
+            'ID_partener' => $row['ID_partener'],
+        );
+    }
 }
 ?>
 
@@ -79,11 +81,11 @@ if (!is_null($evenimentID)) {
 <html>
 
 <head>
-    <title>Editare Eveniment</title>
+    <title>Editează un eveniment</title>
 </head>
 
 <body>
-    <h2>Editare Eveniment</h2>
+    <h2>Editează un eveniment</h2>
     <form method="post" action="editare_eveniment.php">
         <select name="eveniment_selectat" required>
             <?php foreach ($evenimente as $id => $nume): ?>
@@ -92,13 +94,13 @@ if (!is_null($evenimentID)) {
                 </option>
             <?php endforeach; ?>
         </select>
-        <input type="submit" name="edit_event" value="Editează Eveniment">
+        <input type="submit" name="edit_event" value="Editează evenimentul">
     </form>
 
     <?php if (!empty($detalii_eveniment)): ?>
         <div>
-            <h3>Detalii Eveniment</h3>
-            Nume Eveniment:
+            <h3>Detaliile actuale despre eveniment</h3>
+            Numele evenimentului:
             <?php echo $detalii_eveniment['Nume_eveniment']; ?><br>
             Data:
             <?php echo $detalii_eveniment['Data']; ?><br>
@@ -110,30 +112,39 @@ if (!is_null($evenimentID)) {
             <?php echo $detalii_eveniment['Locatie']; ?><br>
             Descriere:
             <?php echo $detalii_eveniment['Descriere']; ?><br>
-
-            <!-- Afișează aici și celelalte informații ale evenimentului (ID_tip_bilet, ID_sponsor, ID_speaker, ID_partener) -->
+            Pret:
+            <?php echo $detalii_eveniment['Pret']; ?><br>
+            ID Sponsor:
+            <?php echo $detalii_eveniment['ID_sponsor']; ?><br>
+            ID Speaker:
+            <?php echo $detalii_eveniment['ID_speaker']; ?><br>
+            ID Partener:
+            <?php echo $detalii_eveniment['ID_partener']; ?><br>
 
             <h3>Editare Eveniment</h3>
             <form method="post" action="editare_eveniment.php">
-                <!-- Alte câmpuri pentru editarea evenimentului -->
-                Nume Eveniment: <input type="text" name="nume_eveniment"
+                Nume eveniment: <input type="text" name="nume_eveniment"
                     value="<?php echo $detalii_eveniment['Nume_eveniment']; ?>"><br>
                 Data: <input type="date" name="data" value="<?php echo $detalii_eveniment['Data']; ?>"><br>
                 Ora: <input type="time" name="ora" value="<?php echo $detalii_eveniment['Ora']; ?>"><br>
                 Tip: <input type="text" name="tip" value="<?php echo $detalii_eveniment['Tip']; ?>"><br>
                 Locație: <input type="text" name="locatie" value="<?php echo $detalii_eveniment['Locatie']; ?>"><br>
+                Pret: <input type="number" name="pret" value="<?php echo $detalii_eveniment['Pret']; ?>"><br>
                 Descriere: <textarea name="descriere"><?php echo $detalii_eveniment['Descriere']; ?></textarea><br>
-
-                <!-- Adaugă câmpurile pentru celelalte informații ale evenimentului (ID_tip_bilet, ID_sponsor, ID_speaker, ID_partener) -->
-                <!-- Dacă aceste câmpuri sunt necesare pentru editare -->
+                ID Sponsor: <input type="text" name="id_sponsor"
+                    value="<?php echo $detalii_eveniment['ID_sponsor']; ?>"><br>
+                ID Speaker: <input type="text" name="id_speaker"
+                    value="<?php echo $detalii_eveniment['ID_speaker']; ?>"><br>
+                ID Partener: <input type="text" name="id_partener"
+                    value="<?php echo $detalii_eveniment['ID_partener']; ?>"><br>
 
                 <input type="hidden" name="eveniment_id" value="<?php echo $evenimentID; ?>">
-                <input type="submit" name="salveaza_editare" value="Salvează Modificările">
+                <input type="submit" name="salveaza_editare" value="Salvează modificările">
             </form>
         </div>
     <?php endif; ?>
 
-    <a href="admin.php">Înapoi la Panou de Control pentru Administrator</a>
+    <a href="admin.php">Înapoi la pagina principală</a>
 
 </body>
 

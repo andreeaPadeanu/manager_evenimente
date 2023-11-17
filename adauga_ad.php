@@ -2,11 +2,11 @@
 <html>
 
 <head>
-    <title>Adaugă Administrator</title>
+    <title>Adaugă un administrator nou</title>
 </head>
 
 <body>
-    <h2>Adaugă Administrator</h2>
+    <h2>Adaugă un administrator nou</h2>
     <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Procesați adăugarea unui administrator
@@ -34,10 +34,10 @@
         Prenume: <input type="text" name="prenume" required><br>
         Email: <input type="text" name="email" required><br>
         Parola: <input type="password" name="parola" required><br>
-        <input type="submit" value="Adaugă Administrator">
+        <input type="submit" value="Adaugă administratorul">
     </form>
 
-    <a href="admin.php">Înapoi la Panou de Control pentru Administrator</a>
+    <a href="admin.php">Înapoi la pagina principală</a>
 </body>
 
 </html>

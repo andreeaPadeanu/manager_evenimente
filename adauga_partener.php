@@ -34,20 +34,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html>
 
 <head>
-    <title>Adăugare Partener Nou</title>
+    <title>Adăugă un partener nou</title>
 </head>
 
 <body>
-    <h2>Adăugare Partener Nou</h2>
+    <h2>Adăugă un partener nou</h2>
     <form method="post" action="adauga_partener.php">
-        <label for="nume_partener">Nume Partener:</label>
+        <label for="nume_partener">Numele partenerului:</label>
         <input type="text" name="nume_partener" required><br>
-        <label for="descriere_partener">Descriere Partener:</label>
+        <label for="descriere_partener">Descrierea partenerului:</label>
         <textarea name="descriere_partener"></textarea><br>
-        <input type="submit" name="adauga_partener" value="Adaugă Partener">
+        <input type="submit" name="adauga_partener" value="Adaugă noul partener">
     </form>
 
-    <a href="admin.php">Înapoi la Panou de Control pentru Administrator</a>
+    <a href="admin.php">Înapoi la pagina principală</a>
 </body>
 
 </html>

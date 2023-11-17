@@ -35,20 +35,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html>
 
 <head>
-    <title>Adăugare Speaker Nou</title>
+    <title>Adăugă un speaker nou</title>
 </head>
 
 <body>
-    <h2>Adăugare Speaker Nou</h2>
+    <h2>Adăugă un speaker nou</h2>
     <form method="post" action="adauga_speaker.php">
-        <label for="nume_speaker">Nume Speaker:</label>
+        <label for="nume_speaker">Numele speaker-ului:</label>
         <input type="text" name="nume_speaker" required><br>
-        <label for="descriere_speaker">Descriere Speaker:</label>
+        <label for="descriere_speaker">Descrierea speaker-ului:</label>
         <textarea name="descriere_speaker"></textarea><br>
         <input type="submit" name="adauga_speaker" value="Adaugă Speaker">
     </form>
 
-    <a href="admin.php">Înapoi la Panou de Control pentru Administrator</a>
+    <a href="admin.php">Înapoi la pagina principală</a>
 </body>
 
 </html>

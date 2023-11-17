@@ -10,9 +10,9 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 
 // Obține evenimentele și tipurile de bilete din baza de date
-$query_evenimente = "SELECT E.ID_eveniment, E.Nume_eveniment, E.Data, E.Ora, E.Locatie, E.Descriere_eveniment, TB.Tip_bilet
-                    FROM Eveniment E
-                    LEFT JOIN Tip_Bilet TB ON E.ID_tip_bilet = TB.ID_tip_bilet";
+$query_evenimente = $query_evenimente = "SELECT E.ID_eveniment, E.Nume_eveniment, E.Data, E.Ora, E.Locatie, E.Descriere_eveniment
+FROM Eveniment E";
+
 $result_evenimente = $conn->query($query_evenimente);
 ?>
 
@@ -72,7 +72,6 @@ $result_evenimente = $conn->query($query_evenimente);
                     echo "<p>Data: " . $row['Data'] . ", Ora: " . $row['Ora'] . "</p>";
                     echo "<p>Locație: " . $row['Locatie'] . "</p>";
                     echo "<p>Descriere: " . $row['Descriere_eveniment'] . "</p>";
-                    echo "<p>Tip bilet: " . $row['Tip_bilet'] . "</p>";
 
                     // Link pentru a adăuga în coș folosind scriptul JavaScript
                     echo "<a href='javascript:void(0)' onclick='adaugaInCos(" . $row['ID_eveniment'] . ")'>Adaugă în coș</a>";
