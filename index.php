@@ -20,9 +20,9 @@ $result_evenimente = $conn->query($query_evenimente);
 <html>
 
 <head>
-    <style>
-        /* Stilizare pentru pagina de evenimente */
-    </style>
+    <title>Eventica</title>
+    <link href="index.css" rel="stylesheet" type="text/css">
+    
     <script>
         // Script JavaScript pentru adăugarea în coș fără a naviga la altă pagină
         function adaugaInCos(evenimentId) {
@@ -37,29 +37,37 @@ $result_evenimente = $conn->query($query_evenimente);
             };
             xhttp.send("eveniment_id=" + evenimentId);
         }
+
+        // Script JavaScript pentru gestionarea meniului hamburger
+        function toggleHamburgerMenu() {
+            var menu = document.getElementById("hamburger-menu");
+            menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+        }
     </script>
 </head>
 
 <body>
-    <header>
+<header class="header">
+        <div class="hamburger-menu">
+            <button onclick="toggleHamburgerMenu()">☰</button>
+            <ul id="hamburger-menu">
+                <li><a href="#">Evenimente viitoare</a></li>
+                <li><a href="#">Categorii</a></li>
+                <li><a href="#">Oferte speciale</a></li>
+                <li><a href="contul_meu.php">Contul Meu</a></li>
+            </ul>
+        </div>
+        
+        <h4 class="title">Eventica</h4>
         <div class="top-right-menu">
             <a href="index.php">Acasă</a>
             <a href="cos.php">Coș</a>
             <a href="notificari.php">Notificări</a>
-            <a href="contul_meu.php">Contul Meu</a>
             <a href="logout.php">Deconectare</a>
         </div>
-        <h1>Bine ați venit pe Pagina Principală</h1>
     </header>
     <div class="container">
-        <div class="menu">
-            <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="#">Evenimente viitoare</a></li>
-                <li><a href="#">Categorii</a></li>
-                <li><a href="#">Oferte speciale</a></li>
-            </ul>
-        </div>
+    
         <div class="content">
             <h2>Evenimente disponibile</h2>
 
@@ -84,7 +92,7 @@ $result_evenimente = $conn->query($query_evenimente);
         </div>
     </div>
     <div class="footer">
-        <p>&copy; 2023 Numele Companiei. Toate drepturile rezervate</p>
+        <p>&copy;2023 Eventica. Toate drepturile rezervate</p>
     </div>
 </body>
 

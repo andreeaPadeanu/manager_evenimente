@@ -1,0 +1,90 @@
+/* #f4f1de alb
+#eab69f roz deschis
+#e07a5f roz inchis
+#3d405b albastru
+#81b29a verde
+#f2cc8f galben
+*/
+body {
+  font-family: Arial, sans-serif;
+  margin: 0px;
+}
+.title {
+  color: #f4f1de;
+  text-align: left;
+
+}
+.footer {
+  background-color: #3d405b; 
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align:center;
+  margin-left: 0;
+  color: #f4f1de;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3d405b;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-top: 0;
+}
+
+.hamburger-menu button {
+  background-color: #3d405b; 
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-family: "Arial", sans-serif;
+}
+
+.hamburger-menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background-color: #3d405b;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 25%; 
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.hamburger-menu li a{
+  padding: 15px;
+  text-align: center;
+  color: #eab69f;
+  cursor: pointer;
+  font-family: "Arial", sans-serif;
+  text-decoration: none; 
+  margin-bottom: 10px;
+  display: block;
+  
+}
+.hamburger-menu li a:hover {
+  color: #e07a5f; 
+}
+
+/* Stilizare pentru meniul din partea dreaptă */
+.top-right-menu {
+  display: flex;
+  gap: 15px;
+  margin-right: 5px;
+  font-size: small;
+}
+
+.top-right-menu a {
+  text-decoration: none;
+  color: #eab69f;
+}
+.top-right-menu a:hover{
+  color:#e07a5f;
+}
