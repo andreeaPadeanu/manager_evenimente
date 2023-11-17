@@ -70,11 +70,20 @@ if ($stmt = $conn->prepare($query)) {
 <html>
 
 <head>
-    <!-- Stiluri CSS, antet, etc. -->
+    <link href="contul_meu.css" rel="stylesheet" type="text/css">
+    <title class="title">Contul meu</title>
 </head>
 
 <body>
-    <!-- Alte elemente HTML, antet, meniu, etc. -->
+<header class="header">
+        <h3 class="title">Eventica</h3>
+        <div class="top-right-menu">
+            <a href="index.php">Acasă</a>
+            <a href="cos.php">Coș</a>
+            <a href="notificari.php">Notificări</a>
+            <a href="logout.php">Deconectare</a>
+        </div>
+    </header>
 
     <div class="content">
         <h2>Datele contului meu</h2>
@@ -102,15 +111,15 @@ if ($stmt = $conn->prepare($query)) {
             </div>
             <div class="form-group">
                 <label>Telefon:</label>
-                <input type="text" name="telefon" value="<?php echo $telefon; ?>">
+                <input type="text" name="telefon" value="<?php echo $telefon; ?>"> 
             </div>
+            <!-- !!! echo input <input type="text" name="telefon" value="$telefon"> -->
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Actualizare">
             </div>
         </form>
     </div>
 
-    <!-- Alte elemente HTML, subsol, etc. -->
 </body>
 
 </html>

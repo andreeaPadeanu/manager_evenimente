@@ -37,34 +37,54 @@ $result_evenimente = $conn->query($query_evenimente);
             };
             xhttp.send("eveniment_id=" + evenimentId);
         }
-
-        // Script JavaScript pentru gestionarea meniului hamburger
-        function toggleHamburgerMenu() {
-            var menu = document.getElementById("hamburger-menu");
-            menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+        
+        // function toggleHamburgerMenu() {
+        //     var menu = document.getElementById("hamburger-menu");
+        //     menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+        // }
+        
+        function toggleMenu() {
+            var menu = document.querySelector('.hamburger-menu');
+            menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+            console.log("Butonul a fost apăsat!")
         }
+
     </script>
 </head>
 
 <body>
 <header class="header">
-        <div class="hamburger-menu">
-            <button onclick="toggleHamburgerMenu()">☰</button>
-            <ul id="hamburger-menu">
-                <li><a href="#">Evenimente viitoare</a></li>
-                <li><a href="#">Categorii</a></li>
-                <li><a href="#">Oferte speciale</a></li>
-                <li><a href="contul_meu.php">Contul Meu</a></li>
-            </ul>
-        </div>
+<h3 class="title">Eventica</h3>
+<div class="icon" onclick="toggleMenu()">
+        <div class="bar "></div>
+        <div class="bar "></div>
+        <div class="bar "></div>
+</div>
+<div class="hamburger-menu">
+    
+    <!-- <button onclick="toggleHamburgerMenu()">☰</button> -->
+
+    <ul id="hamburger-menu">
+        <li><a href="#">Evenimente viitoare</a></li>
+        <li><a href="#">Categorii</a></li>
+        <li><a href="#">Oferte speciale</a></li>
+        <li><a href="contul_meu.php">Contul Meu</a></li>
+    </ul>
+</div>
+
+<!-- <div class="hamburger-icon" onclick="toggleHamburgerMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div> -->
         
-        <h4 class="title">Eventica</h4>
+        
         <div class="top-right-menu">
-            <a href="index.php">Acasă</a>
-            <a href="cos.php">Coș</a>
-            <a href="notificari.php">Notificări</a>
-            <a href="logout.php">Deconectare</a>
-        </div>
+        <a href="index.php">Acasă</a>
+        <a href="cos.php">Coș</a>
+        <a href="notificari.php">Notificări</a>
+        <a href="logout.php">Deconectare</a>
+    </div>
     </header>
     <div class="container">
     
@@ -94,6 +114,7 @@ $result_evenimente = $conn->query($query_evenimente);
     <div class="footer">
         <p>&copy;2023 Eventica. Toate drepturile rezervate</p>
     </div>
+
 </body>
 
 </html>

@@ -11,8 +11,7 @@ body {
 }
 .title {
   color: #f4f1de;
-  text-align: left;
-
+  margin-left: 50px;
 }
 .footer {
   background-color: #3d405b; 
@@ -34,7 +33,34 @@ body {
   right: 0;
   margin-top: 0;
 }
-
+.icon {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  top: 15px;
+  left: 10px;
+  cursor: pointer;
+}
+.bar {
+  width: 30px;
+  height: 4px;
+  border-radius: 4px;
+  margin-bottom: 7px;
+  background-color: #e07a5f;
+  display: inline-block;
+}
+.bar:hover {
+  width: 30px;
+  height: 4px;
+  border-radius: 4px;
+  margin-bottom: 7px;
+  background-color: #eab69f;
+  display: inline-block;
+}
+.hamburger-menu {
+display:none;
+}
 .hamburger-menu button {
   background-color: #3d405b; 
   color: white;
@@ -52,12 +78,17 @@ body {
   position: absolute;
   top: 60px;
   left: 0;
-  width: 25%; 
+  width: 15%; 
   height: max-content;
   display: flex;
   flex-direction: column;
 }
-
+.hamburger-menu li {
+  border-bottom: 1px solid #464a68;
+}
+.hamburger-menu li:hover {
+  background: #464a68;
+}
 .hamburger-menu li a{
   padding: 15px;
   text-align: center;
@@ -72,13 +103,11 @@ body {
 .hamburger-menu li a:hover {
   color: #e07a5f; 
 }
-
-/* Stilizare pentru meniul din partea dreaptă */
 .top-right-menu {
   display: flex;
   gap: 15px;
   margin-right: 5px;
-  font-size: small;
+  font-size: medium;
 }
 
 .top-right-menu a {
