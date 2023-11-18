@@ -37,6 +37,16 @@ $stmt_notificari->bind_result($id_notificare, $mesaj);
 </head>
 
 <body>
+<header class="header">
+        <h3 class="title">Eventica</h3>
+        <div class="top-right-menu">
+            <a href="index.php">Acasă</a>
+            <a href="cos.php">Coș</a>
+            <a href="notificari.php">Notificări</a>
+            <a href="logout.php">Deconectare</a>
+        </div>
+    </header>
+
     <div class="title">
         <h1>Notificări</h1>
     </div>
@@ -57,7 +67,7 @@ $stmt_notificari->bind_result($id_notificare, $mesaj);
     }
     ?>
 
-    <a href="index.php" class="footer-link">Înapoi la pagina principală</a>
+    <!-- <a href="index.php" class="footer-link">Înapoi la pagina principală</a> -->
 </body>
 
 </html>

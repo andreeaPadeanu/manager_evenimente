@@ -5,9 +5,11 @@
 }
 
 body {
-  background-color: #3d405b;
-  color: #f4f1de;
-  font-family: sans-serif;
+  scroll-behavior: smooth;
+    background-color: #3d405b;
+    color: #f4f1de;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 60px;
 }
 body p{
   text-align: center;
@@ -20,7 +22,7 @@ body h2{
 }
 
 .title {
-  color: #f4f1de;
+  color: #3d405b;
   margin: 15px;
 }
 

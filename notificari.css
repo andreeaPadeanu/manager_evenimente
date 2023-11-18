@@ -6,41 +6,56 @@
 
 body {
     scroll-behavior: smooth;
-    background-color: #f4f1de; /* Alb */
+    background-color: #3d405b;
+    color: #f4f1de;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding-bottom: 60px; /* Adăugat un spațiu pentru footer */
 }
 
-.header {
-    background-color: #3d405b; /* Albastru inchis */
-    padding: 15px;
-    text-align: right;
+
+.title {
+    color: #3d405b;
+    margin: 15px;
 }
 
-.header a {
-    color: #3d405b; /* Alb */
-    text-decoration: none;
-    font-size: 16px;
-    margin-right: 20px;
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e07a5f;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-top: 0;
+    height: 60px;
 }
+
 .title {
     text-align: center;
-    margin-bottom: 20px;
-    background-color: #3d405b; /* Roz deschis */
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .title h1 {
-    color:  #ffffff  ; /* Albastru inchis */
+    color: #f4f1de;
     font-size: 36px;
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     margin: 0; /* Elimină marginul implicit pentru h1 */
 }
 
+.top-right-menu {
+    display: flex;
+    gap: 15px;
+    margin-right: 5px;
+    font-size: medium;
+}
 
+.top-right-menu a {
+    text-decoration: none;
+    color: #3d405b;
+}
+.top-right-menu a:hover{
+    color:#eab69f;
+}
 
 .notificare-container {
     max-width: 1500px;
@@ -52,18 +67,16 @@ body {
     margin-bottom: 20px;
 }
 
-
-
 .notificare {
     width: 90%;
     max-width: 1500px;
     margin: 20px auto;
     padding: 15px;
-    background-color: #eab69f; /* Roz deschis */
+    background-color: #eab69f; 
     text-align: center;
     border-radius: 8px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    color: #3d405b; /* Albastru inchis */
+    color: #3d405b; 
 }
 
 .notificare p {
@@ -77,7 +90,7 @@ body {
 }
 
 .notificare input[type="submit"] {
-    background-color: #e07a5f; /* Roz inchis */
+    background-color: #e07a5f; 
     border: 0;
     border-radius: 4px;
     outline: none;
@@ -87,13 +100,13 @@ body {
     text-transform: uppercase;
     font-size: 10px;
     font-weight: 600;
-    color: #fff; /* Alb */
+    color: #f4f1de; 
     cursor: pointer;
     transition: 0.25s;
 }
 
 .notificare input[type="submit"]:hover {
-    background-color: #f2cc8f; /* Galben */
+    background-color: #f2cc8f; 
 }
 
 .footer-link {
@@ -101,8 +114,8 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #3d405b; /* Albastru inchis */
-    color: #fff; /* Alb */
+    background-color: #3d405b; 
+    color: #f4f1de; 
     text-decoration: none;
     text-align: center;
     padding: 15px; /* Ajustat pentru a mări zona clicabilă */

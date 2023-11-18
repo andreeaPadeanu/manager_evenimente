@@ -97,7 +97,7 @@ if (isset($_POST['adauga_cos']) && isset($_POST['eveniment_id'])) {
                     } else {
                         echo "<p>Coșul tău este gol.</p>";
                     }
-                    echo "<button type='submit' name='achizitie'>Achiziționează</button>";
+                    // echo "<button type='submit' name='achizitie'">Achiziționează</button>";
                     ?>
                 </ul>
             </form>
@@ -111,7 +111,7 @@ if (isset($_POST['adauga_cos']) && isset($_POST['eveniment_id'])) {
     </div>
 <script>
     function redirectToIndex() {
-        window.location.href = "index.php";
+        window.location.href = "achizitie.php";
     }
 </script>
     <div class="footer">
