@@ -27,25 +27,39 @@ $stmt_notificari->bind_param("i", $user_id);
 $stmt_notificari->execute();
 $stmt_notificari->bind_result($id_notificare, $mesaj);
 
+
 ?>
 
 <!DOCTYPE html>
 <html>
 
 <head>
+    <script>
+        function toggleMenu() {
+            var menu = document.querySelector('.header .top-right-menu ul');
+            menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+            console.log("Butonul a fost apăsat!");
+        }
+    </script>
     <link href="notificari.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-<header class="header">
+    <header class="header">
         <h3 class="title">Eventica</h3>
+        <div class="icon" onclick="toggleMenu()">
+            <div class="bar "></div>
+            <div class="bar "></div>
+            <div class="bar "></div>
+        </div>
+
         <div class="top-right-menu">
             <a href="index.php">Acasă</a>
-            <a href="cos.php">Coș</a>
-            <a href="notificari.php">Notificări</a>
+            <a href="contul_meu.php">Contul meu</a>
             <a href="logout.php">Deconectare</a>
         </div>
     </header>
+
 
     <div class="title">
         <h1>Notificări</h1>

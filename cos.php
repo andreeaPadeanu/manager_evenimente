@@ -23,7 +23,7 @@ if (isset($_POST['adauga_cos']) && isset($_POST['eveniment_id'])) {
 <html>
 
 <head>
-<link href="cos.css" rel="stylesheet" type="text/css">
+    <link href="cos.css" rel="stylesheet" type="text/css">
     <title class="title">Cosul meu</title>
     <style>
 
@@ -39,12 +39,11 @@ if (isset($_POST['adauga_cos']) && isset($_POST['eveniment_id'])) {
 </head>
 
 <body>
-<header class="header">
+    <header class="header">
         <h3 class="title">Eventica</h3>
         <div class="top-right-menu">
             <a href="index.php">Acasă</a>
-            <a href="cos.php">Coș</a>
-            <a href="notificari.php">Notificări</a>
+            <a href="contul_meu.php">Contul meu</a>
             <a href="logout.php">Deconectare</a>
         </div>
     </header>
@@ -93,9 +92,14 @@ if (isset($_POST['adauga_cos']) && isset($_POST['eveniment_id'])) {
                             echo "<p id='cost_$eveniment_id'>Costul biletelor: $pret RON</p>";
 
                             echo "</li>";
+                            echo "<form method='post' action='achizitie.php'>";
+                            echo "<button type='submit' class='custom-btn btn-7' name='achizitie'><span>Achiziționează</span></button>";
+                            echo "</form>";
                         }
                     } else {
                         echo "<p>Coșul tău este gol.</p>";
+                        echo "<button class='custom-btn btn-7' onclick='redirectTo(\"index.php\")'><span>Continuă cumpărăturile</span></button>";
+
                     }
                     // echo "<button type='submit' name='achizitie'">Achiziționează</button>";
                     ?>
@@ -106,14 +110,12 @@ if (isset($_POST['adauga_cos']) && isset($_POST['eveniment_id'])) {
         </div>
     </div>
     <br><br><br>
-    <div class="button-container">
-    <button class="custom-btn btn-7" onclick="redirectToIndex()"><span>Continua  cumparaturile</span></button>
-    </div>
-<script>
-    function redirectToIndex() {
-        window.location.href = "achizitie.php";
-    }
-</script>
+
+    <script>
+        function redirectTo(page) {
+            window.location.href = page;
+        }
+    </script>
     <div class="footer">
         <p>&copy;2023 Eventica. Toate drepturile rezervate</p>
     </div>

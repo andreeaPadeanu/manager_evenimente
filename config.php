@@ -2,7 +2,7 @@
 $host = "localhost";
 $username = "root";
 $password = "root";
-$database = "evenimente1";
+$database = "evenimente";
 
 // Configurare a locației socket-ului MAMP
 $socket = '/Applications/MAMP/tmp/mysql/mysql.sock';
