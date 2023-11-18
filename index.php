@@ -10,10 +10,12 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 
 // Obține evenimentele și tipurile de bilete din baza de date
-$query_evenimente = $query_evenimente = "SELECT E.ID_eveniment, E.Nume_eveniment, E.Data, E.Ora, E.Locatie, E.Descriere_eveniment
-FROM Eveniment E";
+$query_evenimente = "SELECT E.ID_eveniment, E.Nume_eveniment, E.Data, E.Ora, E.Locatie, E.Descriere_eveniment, E.Imagine_eveniment
+FROM Eveniment E ORDER BY E.Data DESC, E.Ora DESC";
+
 
 $result_evenimente = $conn->query($query_evenimente);
+
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +24,7 @@ $result_evenimente = $conn->query($query_evenimente);
 <head>
     <title>Eventica</title>
     <link href="index.css" rel="stylesheet" type="text/css">
-    
+
     <script>
         // Script JavaScript pentru adăugarea în coș fără a naviga la altă pagină
         function adaugaInCos(evenimentId) {
@@ -37,7 +39,12 @@ $result_evenimente = $conn->query($query_evenimente);
             };
             xhttp.send("eveniment_id=" + evenimentId);
         }
-        
+
+        // function toggleHamburgerMenu() {
+        //     var menu = document.getElementById("hamburger-menu");
+        //     menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+        // }
+
         function toggleMenu() {
             var menu = document.querySelector('.hamburger-menu');
             menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
@@ -53,80 +60,72 @@ $result_evenimente = $conn->query($query_evenimente);
 </head>
 
 <body>
-<header class="header">
-
-<h3 class="title">Eventica</h3>
-
-<div class="icon" onclick="toggleMenu()">
-        <div class="bar "></div>
-        <div class="bar "></div>
-        <div class="bar "></div>
-</div>
-<div class="hamburger-menu">
-    
-    <!-- <button onclick="toggleHamburgerMenu()">☰</button> -->
-
-    <ul id="hamburger-menu">
-        <li><a href="#">Evenimente viitoare</a></li>
-        <li><a href="#">Categorii</a></li>
-        <li><a href="#">Oferte speciale</a></li>
-        <li><a href="contul_meu.php">Contul Meu</a></li>
-    </ul>
-</div>
-
-<!-- SEARCH BAR -->
-<div class="search-container">
-    <input type="text" class="search-bar" id="searchBar" placeholder="Caută evenimente">
-        <div class="search-icon" onclick="toggleSearchWidth()">
-                🔍 
-                <!-- <img src="search.svg" alt="Search Icon">  -->
+    <header class="header">
+        <h3 class="title">Eventica</h3>
+        <div class="icon" onclick="toggleMenu()">
+            <div class="bar "></div>
+            <div class="bar "></div>
+            <div class="bar "></div>
         </div>
-</div>       
-        
-<div class="top-right-menu">
-        <a href="index.php">Acasă</a>
-        <a href="cos.php">Coș</a>
-        <a href="notificari.php">Notificări</a>
-        <a href="logout.php">Deconectare</a>
-</div>
-</header>
-    
-<div class="container">
+        <div class="hamburger-menu">
+
+            <!-- <button onclick="toggleHamburgerMenu()">☰</button> -->
+
+            <ul id="hamburger-menu">
+                <li><a href="categorii.php">Categorii</a></li>
+                <li><a href="cos.php">Coșul meu</a></li>
+                <li><a href="notificari.php">Notificări</a></li>
+            </ul>
+        </div>
+
+        <!-- <div class="hamburger-icon" onclick="toggleHamburgerMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div> -->
+
+
+        <div class="top-right-menu">
+            <a href="index.php">Acasă</a>
+            <a href="contul_meu.php">Contul meu</a>
+            <a href="logout.php">Deconectare</a>
+        </div>
+    </header>
+    <div class="container">
+
         <div class="content">
             <!-- <h2>Evenimente disponibile</h2> -->
             <img src="backdrop2.jpg" id="backdrop">
 
-            <div class="container">
+            <div class="eveniment-container">
                 <?php
-                // Afișează evenimentele
                 while ($row = $result_evenimente->fetch_assoc()) {
                     echo "<div class='eveniment'>";
+                    echo "<img src='" . $row['Imagine_eveniment'] . "' alt='" . $row['Nume_eveniment'] . "'>";
                     echo "<h3>" . $row['Nume_eveniment'] . "</h3>";
                     echo "<p>Data: " . $row['Data'] . ", Ora: " . $row['Ora'] . "</p>";
                     echo "<p>Locație: " . $row['Locatie'] . "</p>";
                     echo "<p>Descriere: " . $row['Descriere_eveniment'] . "</p>";
-
-                    // Link pentru a adăuga în coș folosind scriptul JavaScript
                     echo "<a href='javascript:void(0)' onclick='adaugaInCos(" . $row['ID_eveniment'] . ")'>Adaugă în coș</a>";
-
                     echo "</div>";
                 }
+
                 ?>
+
             </div>
         </div>
-    </div>
-    <div class="contact">
-    <div class="social-media">
-            <a href="https://www.facebook.com/" target="_blank">Facebook</a>
-            <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+        <div class="contact">
+            <div class="social-media">
+                <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+            </div>
+            <div class="contact-info">
+                <p>Ia legatura cu noi aici</p>
+                <p>Str x 23 , Cluj Napoca</p>
+                <p>0123 456 789</p>
+                <p>eventica@test.com</p>
+            </div>
         </div>
-        <div class="contact-info">
-            <p>Ia legatura cu noi aici</p>
-            <p>Str x 23 , Cluj Napoca</p>
-            <p>0123 456 789</p>
-            <p>eventica@test.com</p>
-        </div>
-    </div>
 
     <!-- <div class="footer">
         <p>&copy;2023 Eventica. Toate drepturile rezervate</p>

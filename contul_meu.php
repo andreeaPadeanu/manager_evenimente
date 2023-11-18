@@ -75,12 +75,11 @@ if ($stmt = $conn->prepare($query)) {
 </head>
 
 <body>
-<header class="header">
+    <header class="header">
         <h3 class="title">Eventica</h3>
         <div class="top-right-menu">
             <a href="index.php">Acasă</a>
-            <a href="cos.php">Coș</a>
-            <a href="notificari.php">Notificări</a>
+            <a href="contul_meu.php">Contul meu</a>
             <a href="logout.php">Deconectare</a>
         </div>
     </header>
@@ -111,7 +110,7 @@ if ($stmt = $conn->prepare($query)) {
             </div>
             <div class="form-group">
                 <label>Telefon:</label>
-                <input type="text" name="telefon" value="<?php echo $telefon; ?>"> 
+                <input type="text" name="telefon" value="<?php echo $telefon; ?>">
             </div>
             <!-- !!! echo input <input type="text" name="telefon" value="$telefon"> -->
             <div class="form-group">
