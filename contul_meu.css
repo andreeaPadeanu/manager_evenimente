@@ -1,0 +1,125 @@
+/* #f4f1de alb
+#eab69f roz deschis
+#e07a5f roz inchis
+#3d405b albastru
+#81b29a verde
+#f2cc8f galben
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #3d405b;
+  color: white;
+  font-family: sans-serif;
+}
+
+.title {
+  color: #f4f1de;
+  margin: 15px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e07a5f;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-top: 0;
+  height: 60px;
+}
+.top-right-menu {
+  display: flex;
+  gap: 15px;
+  margin-right: 5px;
+  font-size: medium;
+}
+
+.top-right-menu a {
+  text-decoration: none;
+  color: #3d405b;
+}
+.top-right-menu a:hover{
+  color:#eab69f;
+}
+.content {
+  width: 50%;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #191919;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+  color: #eab69f;
+  text-align: center;
+  font-weight: 600;
+  font-size: 24px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  color: #eab69f;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+  background-color: transparent;
+  display: block;
+  border: 0;
+  border-radius: 24px;
+  border: 2px solid #3d405b;
+  outline: none;
+  margin: 10px auto;
+  padding: 12px 10px;
+  text-align: center;
+  width: 70%;
+  font-size: 16px;
+  color: white;
+  transition: 0.25s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  width: 80%;
+  border: 2px solid #eab69f;
+}
+
+input[type="submit"] {
+  background-color: transparent;
+  display: block;
+  border: 0;
+  border-radius: 24px;
+  border: 2px solid #eab69f;
+  outline: none;
+  margin: 20px auto;
+  padding: 12px 10px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 50%;
+  font-size: 14px;
+  font-weight: 600;
+  color: #eab69f;
+  transition: 0.25s;
+}
+
+input[type="submit"]:hover {
+  background-color: #eab69f;
+  color: #3d405b;
+  width: 50%;
+}
+
