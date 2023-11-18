@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html>
 
 <head>
-    <title>Ștergere Eveniment</title>
+    <title>Ștergeți un eveniment</title>
     <script>
         function confirmaStergere() {
             var confirmare = confirm("Ești sigur că dorești să ștergi acest eveniment?");
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-    <h2>Ștergere Eveniment</h2>
+    <h2>Ștergeți un eveniment</h2>
     <form method="post" action="sterge_eveniment.php" id="form_stergere">
         <select name="eveniment_selectat" required>
             <?php foreach ($evenimente as $id => $nume): ?>
@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="submit" name="sterge_event" value="Șterge Eveniment" onclick="confirmaStergere()">
     </form>
 
-    <a href="admin.php">Înapoi la Panou de Control pentru Administrator</a>
+    <a href="admin.php">Înapoi la pagina principală </a>
 </body>
 
 </html>

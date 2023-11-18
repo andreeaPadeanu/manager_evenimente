@@ -1,84 +1,128 @@
+<?php
+require('config.php');
+session_start();
+
+// Verifică dacă utilizatorul este autentificat ca administrator
+if (!isset($_SESSION['admin_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['adauga_eveniment'])) {
+    $nume_eveniment = $_POST['nume_eveniment'];
+    $data_eveniment = $_POST['data_eveniment'];
+    $ora_eveniment = $_POST['ora_eveniment'];
+    $tip_eveniment = $_POST['tip_eveniment'];
+    $locatie_eveniment = $_POST['locatie_eveniment'];
+    $descriere_eveniment = $_POST['descriere_eveniment'];
+    $sponsor = $_POST['sponsor'];
+    $speaker = $_POST['speaker'];
+    $partener = $_POST['partener'];
+    $pret = $_POST['pret'];
+
+    // Inserează evenimentul în baza de date
+    $query_insert_eveniment = "INSERT INTO Eveniment (Nume_eveniment, Data, Ora, Tip, Locatie, Descriere_eveniment, Pret) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $stmt_insert_eveniment = $conn->prepare($query_insert_eveniment);
+    $stmt_insert_eveniment->bind_param("ssssssd", $nume_eveniment, $data_eveniment, $ora_eveniment, $tip_eveniment, $locatie_eveniment, $descriere_eveniment, $pret);
+
+    if ($stmt_insert_eveniment->execute()) {
+
+
+
+        $last_event_id = $conn->insert_id;
+
+        // Actualizează evenimentul cu sponsorul, speakerul și partenerul selectați
+        $query_update_eveniment = "UPDATE Eveniment SET ID_sponsor = (SELECT ID_sponsor FROM Sponsor WHERE Nume = ?), 
+                                                            ID_speaker = (SELECT ID_speaker FROM Speaker WHERE Nume = ?), 
+                                                            ID_partener = (SELECT ID_partener FROM Partener WHERE Nume = ?) 
+                                    WHERE ID_eveniment = ?";
+        $stmt_update_eveniment = $conn->prepare($query_update_eveniment);
+        $stmt_update_eveniment->bind_param("sssi", $sponsor, $speaker, $partener, $last_event_id);
+        $stmt_update_eveniment->execute();
+        $stmt_update_eveniment->close();
+
+    }
+    $stmt_insert_eveniment->close();
+}
+
+
+?>
+
 <!DOCTYPE html>
-<html>
+<html lang="ro">
 
 <head>
-    <title>Adăugare Eveniment</title>
+    <title>Adaugă Eveniment</title>
 </head>
 
 <body>
-    <h2>Adăugare Eveniment</h2>
-
-    <?php
-    // Verificați dacă a fost trimis formularul de adăugare a evenimentului
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-        // Includeți fișierul de configurație al bazei de date
-        include 'config.php';
-
-        // Colectați datele din formular
-        $nume_eveniment = $_POST['nume_eveniment'];
-        $data = $_POST['data'];
-        $ora = $_POST['ora'];
-        $tip = $_POST['tip'];
-        $locatie = $_POST['locatie'];
-        $descriere_eveniment = $_POST['descriere_eveniment'];
-        $id_tip_bilet = $_POST['id_tip_bilet'];
-        $id_sponsor = $_POST['id_sponsor'];
-        $id_speaker = $_POST['id_speaker'];
-        $id_partener = $_POST['id_partener'];
-        // Alte date pentru eveniment
-    
-        // Construiți o declarație SQL pentru inserarea evenimentului în baza de date
-        $sql = "INSERT INTO Eveniment (Nume_eveniment, Data, Ora, Tip, Locatie, Descriere_eveniment, ID_tip_bilet, ID_sponsor, ID_speaker, ID_partener) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssssssiiii", $nume_eveniment, $data, $ora, $tip, $locatie, $descriere_eveniment, $id_tip_bilet, $id_sponsor, $id_speaker, $id_partener);
-
-        // Executați declarația SQL
-        if ($stmt->execute()) {
-            echo "Evenimentul a fost adăugat cu succes în baza de date.";
-        } else {
-            echo "Eroare la adăugarea evenimentului: " . $conn->error;
-        }
-
-        // Închideți conexiunea la baza de date
-        $conn->close();
-    }
-    ?>
-
-    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+    <h2>Adaugă un eveniment nou</h2>
+    <form method="post" action="adauga_eveniment.php">
         <label for="nume_eveniment">Nume eveniment:</label>
-        <input type="text" name="nume_eveniment" id="nume_eveniment" required><br>
-
-        <label for="data">Data:</label>
-        <input type="date" name="data" id="data" required><br>
-
-        <label for="ora">Ora:</label>
-        <input type="time" name="ora" id="ora" required><br>
-
-        <label for="tip">Tip eveniment:</label>
-        <input type="text" name="tip" id="tip" required><br>
-
-        <label for="locatie">Locație:</label>
-        <input type="text" name="locatie" id="locatie" required><br>
-
+        <input type="text" name="nume_eveniment" required>
+        <br>
+        <label for="data_eveniment">Data eveniment:</label>
+        <input type="date" name="data_eveniment" required>
+        <br>
+        <label for="ora_eveniment">Ora eveniment:</label>
+        <input type="time" name="ora_eveniment" required>
+        <br>
+        <label for="tip_eveniment">Tip eveniment:</label>
+        <input type="text" name="tip_eveniment" required>
+        <br>
+        <label for="locatie_eveniment">Locație eveniment:</label>
+        <input type="text" name="locatie_eveniment" required>
+        <br>
         <label for="descriere_eveniment">Descriere eveniment:</label>
-        <textarea name="descriere_eveniment" id="descriere_eveniment" required></textarea><br>
+        <textarea name="descriere_eveniment" rows="4" required></textarea>
+        <br>
+        <label for="pret">Preț bilet:</label>
+        <input type="number" name="pret" step="0.01" required>
+        <br>
+        <label for="sponsor">Sponsor:</label>
+        <select name="sponsor" required>
+            <?php
+            $query_sponsori = "SELECT Nume FROM Sponsor";
+            $result_sponsori = $conn->query($query_sponsori);
 
-        <label for="id_tip_bilet">ID tip bilet:</label>
-        <input type="number" name="id_tip_bilet" id="id_tip_bilet" required><br>
+            while ($row = $result_sponsori->fetch_assoc()) {
+                echo "<option value=\"" . $row['Nume'] . "\">" . $row['Nume'] . "</option>";
+            }
+            ?>
+        </select>
+        <br>
+        <label for="speaker">Speaker:</label>
+        <select name="speaker" required>
+            <?php
+            $query_speakeri = "SELECT Nume FROM Speaker";
+            $result_speakeri = $conn->query($query_speakeri);
 
-        <label for="id_sponsor">ID sponsor:</label>
-        <input type="number" name="id_sponsor" id="id_sponsor" required><br>
+            while ($row = $result_speakeri->fetch_assoc()) {
+                echo "<option value=\"" . $row['Nume'] . "\">" . $row['Nume'] . "</option>";
+            }
+            ?>
+        </select>
+        <br>
+        <label for="partener">Partener:</label>
+        <select name="partener" required>
+            <?php
+            $query_parteneri = "SELECT Nume FROM Partener";
+            $result_parteneri = $conn->query($query_parteneri);
 
-        <label for="id_speaker">ID speaker:</label>
-        <input type="number" name="id_speaker" id="id_speaker" required><br>
-
-        <label for="id_partener">ID partener:</label>
-        <input type="number" name="id_partener" id="id_partener" required><br>
-
-        <!-- Alte câmpuri necesare pentru eveniment -->
-
-        <input type="submit" name="submit" value="Adaugă Eveniment">
+            while ($row = $result_parteneri->fetch_assoc()) {
+                echo "<option value=\"" . $row['Nume'] . "\">" . $row['Nume'] . "</option>";
+            }
+            ?>
+        </select>
+        <br>
+        <input type="submit" name="adauga_eveniment" value="Adaugă eveniment">
     </form>
+    <a href="admin.php">Înapoi la pagina principală</a>
+
+    <!-- Afișează mesajul de confirmare după trimiterea formularului -->
+
 </body>
 
 </html>

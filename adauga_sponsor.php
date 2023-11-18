@@ -39,16 +39,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-    <h2>Adăugare Sponsor Nou</h2>
+    <h2>Adăugă un sponsor nou</h2>
     <form method="post" action="adauga_sponsor.php">
-        <label for="nume_speaker">Nume Sponsor:</label>
+        <label for="nume_speaker">Numele sponsorului:</label>
         <input type="text" name="nume_spnsor" required><br>
-        <label for="descriere_sponsor">Descriere Sponsor:</label>
+        <label for="descriere_sponsor">Descrierea sponsorului:</label>
         <textarea name="descriere_sponsor"></textarea><br>
-        <input type="submit" name="adauga_speaker" value="Adaugă Sponsor">
+        <input type="submit" name="adauga_speaker" value="Adaugă noul sponsor">
     </form>
 
-    <a href="admin.php">Înapoi la Panou de Control pentru Administrator</a>
+    <a href="admin.php">Înapoi la pagina principală</a>
 </body>
 
 </html>

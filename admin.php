@@ -25,57 +25,57 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html>
 
 <head>
-    <title>Panou de Control pentru Administrator</title>
+    <title>Panoul de control al administratorilor</title>
 </head>
 
 <body>
-    <h2>Panou de Control pentru Administrator</h2>
-    <p>Bine ați venit, Administrator!</p>
+    <h2>Panoul de control al administratorilor</h2>
+    <p>Bine ați venit !</p>
 
     <!-- Formular pentru adăugarea de evenimente -->
-    <h3>Adăugare Eveniment</h3>
+    <h3>Adăugă un eveniment nou</h3>
     <form method="post" action="adauga_eveniment.php">
         <!-- Adăugați aici câmpurile necesare pentru adăugarea unui eveniment -->
-        <input type="submit" name="adauga_eveniment" value="Adaugă Eveniment">
+        <input type="submit" name="adauga_eveniment" value="Adăugă un eveniment nou">
     </form>
 
     <!-- Formular pentru editarea de evenimente -->
-    <h3>Editare Eveniment</h3>
+    <h3>Editează un eveniment</h3>
     <form method="post" action="editare_eveniment.php">
         <!-- Adăugați aici câmpurile necesare pentru editarea unui eveniment -->
-        <input type="submit" name="editeaza_eveniment" value="Editează Eveniment">
+        <input type="submit" name="editeaza_eveniment" value="Editează un eveniment">
     </form>
 
     <!-- Formular pentru ștergerea de evenimente -->
-    <h3>Stergere Eveniment</h3>
+    <h3>Sterge un eveniment</h3>
     <form method="post" action="sterge_eveniment.php">
         <!-- Adăugați aici câmpurile necesare pentru ștergerea unui eveniment -->
-        <input type="submit" name="sterge_eveniment" value="Șterge Eveniment">
+        <input type="submit" name="sterge_eveniment" value="Sterge un eveniment">
     </form>
-    <h3>Adaugare administrator</h3>
+    <h3>Adaugă un administrator nou</h3>
     <form method="post" action="adauga_ad.php">
         <!-- Adăugați aici câmpurile necesare pentru ștergerea unui eveniment -->
-        <input type="submit" name="Adauga administrator nou" value="Adauga administrator nou">
+        <input type="submit" name="Adauga administrator nou" value="Adaugă un administrator nou">
     </form>
-    <h3>Adaugare Speaker</h3>
+    <h3>Adaugă un speaker nou</h3>
     <form method="post" action="adauga_speaker.php">
         <!-- Adăugați aici câmpurile necesare pentru ștergerea unui eveniment -->
-        <input type="submit" name="Adauga speaker nou" value="Adauga speaker nou">
+        <input type="submit" name="Adauga speaker nou" value="Adaugă un speaker nou">
     </form>
-    <h3>Adaugare Sponsor</h3>
+    <h3>Adaugă un sponsor nou</h3>
     <form method="post" action="adauga_sponsor.php">
         <!-- Adăugați aici câmpurile necesare pentru ștergerea unui eveniment -->
-        <input type="submit" name="Adauga sponsor nou" value="Adauga sponsor nou">
+        <input type="submit" name="Adauga sponsor nou" value="Adaugă un sponsor nou">
     </form>
-    <h3>Adaugare Partener</h3>
+    <h3>Adaugă un partener nou</h3>
     <form method="post" action="adauga_partener.php">
         <!-- Adăugați aici câmpurile necesare pentru ștergerea unui eveniment -->
-        <input type="submit" name="Adauga partener nou" value="Adauga partener nou">
+        <input type="submit" name="Adauga partener nou" value="Adaugă un partener nou">
     </form>
     <h3>Trimite invitatii la evenimente</h3>
     <form method="post" action="trimite_invitatie.php">
         <!-- Adăugați aici câmpurile necesare pentru ștergerea unui eveniment -->
-        <input type="submit" name="Trimite invitatii " value="Trimite invitatii ">
+        <input type="submit" name="Trimite invitatii " value="Trimite invitatii la evenimente ">
     </form>
     <a href="logout.php">Deconectare</a>
 

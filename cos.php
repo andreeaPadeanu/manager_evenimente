@@ -28,6 +28,14 @@ if (isset($_POST['adauga_cos']) && isset($_POST['eveniment_id'])) {
     <style>
 
     </style>
+    <script>
+        function updateCost(evenimentId) {
+            var cantitate = document.getElementById('cantitate_' + evenimentId).value;
+            var pret = document.getElementById('pret_' + evenimentId).value;
+            var costEveniment = cantitate * pret;
+            document.getElementById('cost_' + evenimentId).innerHTML = "Costul biletelor: " + costEveniment + " RON";
+        }
+    </script>
 </head>
 
 <body>
@@ -43,19 +51,23 @@ if (isset($_POST['adauga_cos']) && isset($_POST['eveniment_id'])) {
     <div class="container">
         <div class="content">
             <h2>Coșul tău</h2>
+
             <form method="post" action="achizitie.php">
                 <ul>
                     <?php
+                    // Inițializează costul total
+                    $cost_total = 0;
+
                     if (isset($_SESSION['cos'])) {
                         foreach ($_SESSION['cos'] as $eveniment_id) {
                             // Obține informații despre eveniment din baza de date
-                            $query = "SELECT Nume_eveniment, Data, Ora, Locatie, Descriere_eveniment, ID_tip_bilet
+                            $query = "SELECT Nume_eveniment, Data, Ora, Locatie, Descriere_eveniment, Pret
                                       FROM Eveniment
                                       WHERE ID_eveniment = ?";
                             $stmt = $conn->prepare($query);
                             $stmt->bind_param("i", $eveniment_id);
                             $stmt->execute();
-                            $stmt->bind_result($nume_eveniment, $data, $ora, $locatie, $descriere, $id_tip_bilet);
+                            $stmt->bind_result($nume_eveniment, $data, $ora, $locatie, $descriere, $pret);
                             $stmt->fetch();
 
                             echo "<li>";
@@ -63,18 +75,34 @@ if (isset($_POST['adauga_cos']) && isset($_POST['eveniment_id'])) {
                             echo "<p>Data: $data, Ora: $ora</p>";
                             echo "<p>Locație: $locatie</p>";
                             echo "<p>Descriere: $descriere</p>";
-                            echo "<p>Tip bilet: $id_tip_bilet</p>";
-                            echo "<input type='number' name='cantitate_$eveniment_id' value='1'>";
-                            echo "<input type='hidden' name='eveniment_id' value='$eveniment_id'>";
-                            echo "<button type='submit' name='achizitie'>Achiziționează</button>";
+                            echo "<p>Pret bilet: $pret RON</p>";
+
+                            // Adăugați un câmp pentru a selecta numărul de bilete
+                            echo "<label for='cantitate_$eveniment_id'>Selectează numărul de bilete:</label>";
+                            echo "<select id='cantitate_$eveniment_id' name='cantitate_$eveniment_id' onchange='updateCost($eveniment_id)'>";
+                            for ($i = 1; $i <= 10; $i++) { // Modificați limita superioară la numărul maxim de bilete pe care le permiteți
+                                echo "<option value='$i'>$i</option>";
+                            }
+                            echo "</select>";
+
+                            // Adăugați un câmp hidden pentru eveniment_id și preț
+                            echo "<input type='hidden' id='eveniment_id_$eveniment_id' name='eveniment_id' value='$eveniment_id'>";
+                            echo "<input type='hidden' id='pret_$eveniment_id' value='$pret'>";
+
+                            // Afișați costul inițial
+                            echo "<p id='cost_$eveniment_id'>Costul biletelor: $pret RON</p>";
+
                             echo "</li>";
                         }
                     } else {
                         echo "<p>Coșul tău este gol.</p>";
                     }
+                    echo "<button type='submit' name='achizitie'>Achiziționează</button>";
                     ?>
                 </ul>
             </form>
+
+
         </div>
     </div>
     <br><br><br>
