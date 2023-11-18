@@ -89,7 +89,8 @@ $result_evenimente = $conn->query($query_evenimente);
     <div class="container">
     
         <div class="content">
-            <h2>Evenimente disponibile</h2>
+            <!-- <h2>Evenimente disponibile</h2> -->
+            <img src="backdrop.jpeg" id="backdrop">
 
             <div class="container">
                 <?php
@@ -111,6 +112,19 @@ $result_evenimente = $conn->query($query_evenimente);
             </div>
         </div>
     </div>
+    <div class="contact">
+    <div class="social-media">
+            <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+        </div>
+        <div class="contact-info">
+            <p>Ia legatura cu noi aici</p>
+            <p>Str x 23 , Cluj Napoca</p>
+            <p>0123 456 789</p>
+            <p>eventica@test.com</p>
+        </div>
+    </div>
+
     <div class="footer">
         <p>&copy;2023 Eventica. Toate drepturile rezervate</p>
     </div>
