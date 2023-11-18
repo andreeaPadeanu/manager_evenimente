@@ -38,15 +38,15 @@ $result_evenimente = $conn->query($query_evenimente);
             xhttp.send("eveniment_id=" + evenimentId);
         }
         
-        // function toggleHamburgerMenu() {
-        //     var menu = document.getElementById("hamburger-menu");
-        //     menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
-        // }
-        
         function toggleMenu() {
             var menu = document.querySelector('.hamburger-menu');
             menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
             console.log("Butonul a fost apăsat!")
+        }
+
+        function toggleSearchWidth() {
+            var searchBar = document.getElementById('searchBar');
+            searchBar.style.width = (searchBar.style.width === '150px' || searchBar.style.width === '') ? '250px' : '150px';
         }
 
     </script>
@@ -54,7 +54,9 @@ $result_evenimente = $conn->query($query_evenimente);
 
 <body>
 <header class="header">
+
 <h3 class="title">Eventica</h3>
+
 <div class="icon" onclick="toggleMenu()">
         <div class="bar "></div>
         <div class="bar "></div>
@@ -72,22 +74,24 @@ $result_evenimente = $conn->query($query_evenimente);
     </ul>
 </div>
 
-<!-- <div class="hamburger-icon" onclick="toggleHamburgerMenu()">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-    </div> -->
+<!-- SEARCH BAR -->
+<div class="search-container">
+    <input type="text" class="search-bar" id="searchBar" placeholder="Caută evenimente">
+        <div class="search-icon" onclick="toggleSearchWidth()">
+                🔍 
+                <!-- <img src="search.svg" alt="Search Icon">  -->
+        </div>
+</div>       
         
-        
-        <div class="top-right-menu">
+<div class="top-right-menu">
         <a href="index.php">Acasă</a>
         <a href="cos.php">Coș</a>
         <a href="notificari.php">Notificări</a>
         <a href="logout.php">Deconectare</a>
-    </div>
-    </header>
-    <div class="container">
+</div>
+</header>
     
+<div class="container">
         <div class="content">
             <!-- <h2>Evenimente disponibile</h2> -->
             <img src="backdrop.jpeg" id="backdrop">

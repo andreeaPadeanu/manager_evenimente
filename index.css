@@ -95,6 +95,34 @@ display:none;
 .hamburger-menu li a:hover {
   color: #e07a5f; 
 }
+/* SEARCH BAR */
+.search-container {
+  position: relative;
+}
+
+.search-bar {
+  width: 150px;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  transition: width 0.3s ease-in-out;
+  background-color: #eab69f;
+  color: #464a68;
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* .search-icon img {
+width: 10px; 
+height: 10px;
+} */
+
 .top-right-menu {
   display: flex;
   gap: 15px;
