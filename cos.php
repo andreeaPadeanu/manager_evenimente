@@ -23,18 +23,20 @@ if (isset($_POST['adauga_cos']) && isset($_POST['eveniment_id'])) {
 <html>
 
 <head>
+<link href="cos.css" rel="stylesheet" type="text/css">
+    <title class="title">Cosul meu</title>
     <style>
-        /* Stilizare pentru pagina coșului */
+
     </style>
 </head>
 
 <body>
-    <header>
+<header class="header">
+        <h3 class="title">Eventica</h3>
         <div class="top-right-menu">
             <a href="index.php">Acasă</a>
             <a href="cos.php">Coș</a>
             <a href="notificari.php">Notificări</a>
-            <a href="contul_meu.php">Contul Meu</a>
             <a href="logout.php">Deconectare</a>
         </div>
     </header>
@@ -75,8 +77,17 @@ if (isset($_POST['adauga_cos']) && isset($_POST['eveniment_id'])) {
             </form>
         </div>
     </div>
+    <br><br><br>
+    <div class="button-container">
+    <button class="custom-btn btn-7" onclick="redirectToIndex()"><span>Continua  cumparaturile</span></button>
+    </div>
+<script>
+    function redirectToIndex() {
+        window.location.href = "index.php";
+    }
+</script>
     <div class="footer">
-        <p>&copy; 2023 Numele Companiei. Toate drepturile rezervate</p>
+        <p>&copy;2023 Eventica. Toate drepturile rezervate</p>
     </div>
 </body>
 
