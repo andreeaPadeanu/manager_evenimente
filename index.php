@@ -51,6 +51,11 @@ $result_evenimente = $conn->query($query_evenimente);
             console.log("Butonul a fost apăsat!")
         }
 
+        function toggleSearchWidth() {
+            var searchBar = document.getElementById('searchBar');
+            searchBar.style.width = (searchBar.style.width === '150px' || searchBar.style.width === '') ? '250px' : '150px';
+        }
+
     </script>
 </head>
 

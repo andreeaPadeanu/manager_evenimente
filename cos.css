@@ -169,4 +169,8 @@ body h2 {
   text-align: center;
   margin-left: 0;
   color: #f4f1de;
+  height: 20px;
+}
+.footer p{
+  margin-bottom: 5px;
 }
