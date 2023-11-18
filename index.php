@@ -94,7 +94,7 @@ $result_evenimente = $conn->query($query_evenimente);
 <div class="container">
         <div class="content">
             <!-- <h2>Evenimente disponibile</h2> -->
-            <img src="backdrop.jpeg" id="backdrop">
+            <img src="backdrop2.jpg" id="backdrop">
 
             <div class="container">
                 <?php
@@ -128,9 +128,9 @@ $result_evenimente = $conn->query($query_evenimente);
         </div>
     </div>
 
-    <div class="footer">
+    <!-- <div class="footer">
         <p>&copy;2023 Eventica. Toate drepturile rezervate</p>
-    </div>
+    </div> -->
 
 </body>
 

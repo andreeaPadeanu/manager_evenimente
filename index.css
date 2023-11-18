@@ -98,6 +98,7 @@ display:none;
 /* SEARCH BAR */
 .search-container {
   position: relative;
+  margin-left: 700px;
 }
 
 .search-bar {

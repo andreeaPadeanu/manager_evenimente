@@ -111,7 +111,7 @@ if (isset($_POST['adauga_cos']) && isset($_POST['eveniment_id'])) {
     </div>
 <script>
     function redirectToIndex() {
-        window.location.href = "achizitie.php";
+        window.location.href = "index.php";
     }
 </script>
     <div class="footer">
