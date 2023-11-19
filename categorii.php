@@ -44,6 +44,18 @@ if (!$categorie_selectata && $result_categorii->num_rows > 0) {
     </script>
 
     <script>
+        function adaugaInCos(evenimentId) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "adauga_cos.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    // Afișează răspunsul primit de la server
+                    alert(this.responseText);
+                }
+            };
+            xhttp.send("eveniment_id=" + evenimentId);
+        }
         function toggleMenu() {
             var menu = $('.hamburger-menu');
             menu.css('display', (menu.css('display') === 'none' || menu.css('display') === '') ? 'block' : 'none');
