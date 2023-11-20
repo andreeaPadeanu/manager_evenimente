@@ -39,18 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-    <header>
-        <div class="top-menu">
-            <div class="top-left-menu">
-                <a href="#">Acasă</a>
-                <a href="notificari.php">Notificari</a>
-                <a href="contul_meu.php">Contul Meu</a>
-                <a href="logout.php">Deconectare</a>
-            </div>
-            <div class="top-right-menu">
-                <a href="admin.php">Înapoi la Panou de Control pentru Administrator</a>
-            </div>
-    </header>
+
 <main>
     <h2>Adăugă un partener nou</h2>
     <form method="post" action="adauga_partener.php">
@@ -63,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <a href="admin.php" class="inapoi">Înapoi la pagina principală</a>
 </main>
     <div class="footer">
-        <p>&copy; <?php echo date("Y"); ?> Numele Companiei. Toate drepturile rezervate</p>
+        <p>&copy; <?php echo date("Y"); ?>  Eventica. Toate drepturile rezervate</p>
     </div>
 </body>
 

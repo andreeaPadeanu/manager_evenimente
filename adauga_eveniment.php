@@ -60,19 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['adauga_eveniment'])) {
 </head>
 
 <body>
-<header>
-        <div class="top-menu">
-            <div class="top-left-menu">
-                <a href="adauga_partener.php">Adauga Partener</a>
-                <a href="adauga_sponsor.php">Adauga sponsoi</a>
-                <a href="adauga_speaker.php">Adauga Speaker</a>
-            </div>
-            <div class="top-right-menu">
-                <a href="sterge_eveniment">Stergere Eveniment</a>
-                <a href="editare_eveniment.">Editare Eveniment</a>
-                <a href="logout.php">Deconectare</a>
-            </div>
-    </header>
+
     <h2>Adaugă un eveniment nou</h2>
     <form method="post" action="adauga_eveniment.php">
         <label for="nume_eveniment">Nume eveniment:</label>

@@ -3,6 +3,8 @@
 
 <head>
     <title>Adaugă un administrator nou</title>
+    <link href="adauga_ad.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body>
@@ -37,7 +39,7 @@
         <input type="submit" value="Adaugă administratorul">
     </form>
 
-    <a href="admin.php">Înapoi la pagina principală</a>
+    <a href="admin.php" class="inapoi">Înapoi la pagina principală</a>
 </body>
 
 </html>

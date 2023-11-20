@@ -86,17 +86,7 @@ if (!is_null($evenimentID)) {
 </head>
 
 <body>
-<div class="menu">
-            <div class="top-right-menu">
-                <a href="notificari.php">Notificari </a>
-                <a href="contul_meu.php">Contul Meu</a>
-                <a href="logout.php">Deconectare</a>
-            </div>
-            <div class="top-left-menu">
-                <a href="admin.php">Înapoi la Panou de Control pentru Administrator</a>
-            </div>
-        </div>
-        
+
     <h2>Editează un eveniment</h2>
     <form method="post" action="editare_eveniment.php">
         <select name="eveniment_selectat" required>
@@ -156,7 +146,7 @@ if (!is_null($evenimentID)) {
         </div>
     <?php endif; ?>
 
-    <a href="admin.php">Înapoi la pagina principală</a>
+    <a href="admin.php" class="inapoi">Înapoi la pagina principală</a>
 
 </body>
 

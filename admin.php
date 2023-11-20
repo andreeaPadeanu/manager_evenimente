@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html>
 
 <head>
+<link href="admin.css" rel="stylesheet" type="text/css">
     <title>Panoul de control al administratorilor</title>
 </head>
 

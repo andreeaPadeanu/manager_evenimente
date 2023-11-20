@@ -1,6 +1,5 @@
 body {
   font-family: Arial, sans-serif;
-  background: url("C:\xampp\htdocs\PHP\proiectEvenimente\th.jpeg") center/cover no-repeat;
   color: #3d405b;
   margin: 0;
   padding: 0;
@@ -8,22 +7,6 @@ body {
   flex-direction: column;
   min-height: 100vh;
   position: relative;
-}
-
-header {
-  background-color: #3d405b;
-  color: #f0f0f0;
-  padding: 10px;
-  text-align: center;
-  position: relative;
-}
-
-main {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
 }
 
 form {
@@ -36,7 +19,7 @@ max-width: 600px;
 margin: 0 auto;
 transition: box-shadow 0.3s ease-in-out;
 margin-top: 50px;
-font-size: 16px; /* Adăugă această linie pentru a mări dimensiunea textului */
+font-size: 16px; 
 }
 
 
@@ -44,26 +27,9 @@ form:hover {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
-.ribbon {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 20px;
-  overflow: hidden;
-}
-
-.ribbon::before {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 20px;
-  overflow: hidden;
-}
 
 h2 {
-  color: #f4f1de;
+  color: #3d405b;
   text-align: center;
   position: relative;
   margin: 0;
@@ -75,7 +41,7 @@ h2 {
 label {
   display: block;
   margin-bottom: 5px;
-  color: #f4f1de;
+  color: #3d405b;
 }
 
 input,
@@ -92,8 +58,8 @@ input[type="submit"] {
 background-color: #eab69f;
 color: #f4f1de;
 cursor: pointer;
-padding: 14px; /* Mărește dimensiunea butonului */
-font-size: 18px; /* Mărește dimensiunea textului butonului */
+padding: 14px; 
+font-size: 18px;
 border: none;
 border-radius: 4px;
 transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
@@ -102,32 +68,6 @@ transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
 input[type="submit"]:hover {
 background-color: #e07a5f;
 transform: scale(1.05);
-}
-
-.footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-  clear: both;
-}
-
-.menu {
-  background-color: #0070cc;
-  color: white;
-  padding: 10px;
-}
-
-.menu ul {
-  list-style-type: none;
-  padding: 0;
-  text-align: center;
-  /* Centrare */
-}
-
-.menu ul li {
-  display: inline;
-  margin-right: 20px;
 }
 
 .content {
@@ -156,22 +96,8 @@ a:hover {
   text-decoration: underline;
 }
 
-.top-menu {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-}
-
-.top-menu a {
-  color: white;
-  text-decoration: none;
-  margin-right: 20px;
-}
-
-.top-menu a:hover {
-  text-decoration: underline;
-}
 .inapoi{
   color: #3d405b;
   margin: 10px;
+  text-align: center;
 }

@@ -57,7 +57,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html>
 
 <head>
+<link href="trimite_invitatie.css" rel="stylesheet" type="text/css">
+
     <script>
+        
         function showPopup(message) {
             alert(message);
         }

@@ -48,6 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html>
 
 <head>
+<link href="sterge_eveniment.css" rel="stylesheet" type="text/css">
+
     <title>Ștergeți un eveniment</title>
     <script>
         function confirmaStergere() {
@@ -73,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="submit" name="sterge_event" value="Șterge Eveniment" onclick="confirmaStergere()">
     </form>
 
-    <a href="admin.php">Înapoi la pagina principală </a>
+    <a href="admin.php" class="inapoi">Înapoi la pagina principală </a>
 </body>
 
 </html>
