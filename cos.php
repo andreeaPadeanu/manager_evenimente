@@ -98,24 +98,15 @@ if (isset($_POST['adauga_cos']) && isset($_POST['eveniment_id'])) {
                         }
                     } else {
                         echo "<p>Coșul tău este gol.</p>";
-                        echo "<button class='custom-btn btn-7' onclick='redirectTo(\"index.php\")'><span>Continuă cumpărăturile</span></button>";
-
                     }
-                    // echo "<button type='submit' name='achizitie'">Achiziționează</button>";
+
                     ?>
                 </ul>
             </form>
-
-
         </div>
     </div>
     <br><br><br>
 
-    <script>
-        function redirectTo(page) {
-            window.location.href = page;
-        }
-    </script>
     <div class="button-container">
     <button class="custom-btn btn-7" onclick="redirectToIndex()"><span>Continua  cumparaturile</span></button>
     </div>

@@ -6,7 +6,7 @@
 #f2cc8f galben
 */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
 }
 .title {
@@ -41,14 +41,6 @@ body {
   background-color: #e07a5f;
   display: inline-block;
 }
-/* .bar:hover {
-  width: 30px;
-  height: 4px;
-  border-radius: 4px;a
-  margin-bottom: 7px;
-  background-color: #eab69f;
-  display: inline-block;
-} */
 
 .hamburger-menu {
 display:none;
@@ -127,7 +119,7 @@ height: 10px;
 .top-right-menu {
   display: flex;
   gap: 15px;
-  margin-right: 5px;
+  margin-right: 10px;
   font-size: medium;
 }
 

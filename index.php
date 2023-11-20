@@ -40,11 +40,6 @@ $result_evenimente = $conn->query($query_evenimente);
             xhttp.send("eveniment_id=" + evenimentId);
         }
 
-        // function toggleHamburgerMenu() {
-        //     var menu = document.getElementById("hamburger-menu");
-        //     menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
-        // }
-
         function toggleMenu() {
             var menu = document.querySelector('.hamburger-menu');
             menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
@@ -67,36 +62,23 @@ $result_evenimente = $conn->query($query_evenimente);
             <div class="bar "></div>
             <div class="bar "></div>
         </div>
-        <div class="hamburger-menu">
+    <div class="hamburger-menu">
+        <ul id="hamburger-menu">
+            <li><a href="categorii.php">Categorii</a></li>
+            <li><a href="cos.php">Coșul meu</a></li>
+            <li><a href="notificari.php">Notificări</a></li>
+        </ul>
+    </div>
 
-            <!-- <button onclick="toggleHamburgerMenu()">☰</button> -->
-
-            <ul id="hamburger-menu">
-                <li><a href="categorii.php">Categorii</a></li>
-                <li><a href="cos.php">Coșul meu</a></li>
-                <li><a href="notificari.php">Notificări</a></li>
-            </ul>
-        </div>
-
-        <!-- <div class="hamburger-icon" onclick="toggleHamburgerMenu()">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-    </div> -->
-
-
-        <div class="top-right-menu">
-            <a href="index.php">Acasă</a>
-            <a href="contul_meu.php">Contul meu</a>
-            <a href="logout.php">Deconectare</a>
-        </div>
-    </header>
+    <div class="top-right-menu">
+        <a href="index.php">Acasă</a>
+        <a href="contul_meu.php">Contul meu</a>
+        <a href="logout.php">Deconectare</a>
+    </div>
+</header>
     <div class="container">
-
         <div class="content">
-            <!-- <h2>Evenimente disponibile</h2> -->
-            <img src="backdrop2.jpg" id="backdrop">
-
+            <img src="backdrop.jpg" id="backdrop">
             <div class="eveniment-container">
                 <?php
                 while ($row = $result_evenimente->fetch_assoc()) {
@@ -109,27 +91,25 @@ $result_evenimente = $conn->query($query_evenimente);
                     echo "<a href='javascript:void(0)' onclick='adaugaInCos(" . $row['ID_eveniment'] . ")'>Adaugă în coș</a>";
                     echo "</div>";
                 }
-
-                ?>
-
-            </div>
+            ?>
         </div>
-        <div class="contact">
-            <div class="social-media">
-                <a href="https://www.facebook.com/" target="_blank">Facebook</a>
-                <a href="https://www.instagram.com/" target="_blank">Instagram</a>
-            </div>
-            <div class="contact-info">
-                <p>Ia legatura cu noi aici</p>
-                <p>Str x 23 , Cluj Napoca</p>
-                <p>0123 456 789</p>
-                <p>eventica@test.com</p>
-            </div>
+    </div>
+    <div class="contact">
+        <div class="social-media">
+            <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com/" target="_blank">Instagram</a>
         </div>
+        <div class="contact-info">
+            <p>Ia legatura cu noi aici</p>
+            <p>Str x 23 , Cluj Napoca</p>
+            <p>0123 456 789</p>
+            <p>eventica@test.com</p>
+        </div>
+    </div>
 
-    <!-- <div class="footer">
+    <div class="footer">
         <p>&copy;2023 Eventica. Toate drepturile rezervate</p>
-    </div> -->
+    </div>
 
 </body>
 
