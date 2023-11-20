@@ -60,6 +60,7 @@ body h2 {
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+  text-align: center;
 }
 
 .custom-btn {
@@ -173,4 +174,36 @@ body h2 {
 }
 .footer p{
   margin-bottom: 5px;
+}
+.event-item {
+  border: 2px solid #e07a5f;
+  padding: 15px;
+  margin-bottom: 5px; /* Redu spațiul dintre elementele evenimentului */
+  border-radius: 10px;
+  text-align: left;
+}
+
+.event-item p {
+  margin-bottom: 5px;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.quantity-label {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+
+.quantity-select {
+  display: block;
+  margin: 0 auto;
+}
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  margin-bottom: 0px; /* Ajustați la valoarea dorită pentru spațiul între elementele listei */
 }
