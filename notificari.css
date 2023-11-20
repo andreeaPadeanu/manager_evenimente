@@ -1,34 +1,99 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 body {
-    scroll-behavior: smooth;
-    background-color: #3d405b;
+    font-family: Arial, sans-serif;
+    margin: 0px;
+    
+  }
+  .title {
     color: #f4f1de;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding-bottom: 60px; /* Adăugat un spațiu pentru footer */
-}
-
-
-.title {
-    color: #3d405b;
-    margin: 15px;
-}
-
-.header {
+    margin-left: 50px;
+  }
+  
+  .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #e07a5f;
+    background-color: #3d405b;
     top: 0;
     left: 0;
     right: 0;
     margin-top: 0;
-    height: 60px;
+  }
+  .icon {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    top: 15px;
+    left: 10px;
+    cursor: pointer;
+  }
+  .bar {
+    width: 30px;
+    height: 4px;
+    border-radius: 4px;
+    margin-bottom: 7px;
+    background-color: #e07a5f;
+    display: inline-block;
+  }
+  /* .bar:hover {
+    width: 30px;
+    height: 4px;
+    border-radius: 4px;a
+    margin-bottom: 7px;
+    background-color: #eab69f;
+    display: inline-block;
+  } */
+  
+  .hamburger-menu {
+  display:none;
+  }
+  .hamburger-menu.open {
+    display: block;
 }
+
+  .hamburger-menu button {
+    background-color: #3d405b; 
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-family: "Arial", sans-serif;
+  }
+  
+  .hamburger-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #3d405b;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 15%; 
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+  }
+  .hamburger-menu li {
+    border-bottom: 1px solid #464a68;
+  }
+  .hamburger-menu li:hover {
+    background: #464a68;
+  }
+  .hamburger-menu li a{
+    padding: 15px;
+    text-align: center;
+    color: #eab69f;
+    cursor: pointer;
+    font-family: "Arial", sans-serif;
+    text-decoration: none; 
+    margin-bottom: 10px;
+    display: block;
+    
+  }
+  .hamburger-menu li a:hover {
+    color: #e07a5f; 
+  }
 
 .title {
     text-align: center;
@@ -51,7 +116,7 @@ body {
 
 .top-right-menu a {
     text-decoration: none;
-    color: #3d405b;
+    color: #f4f1de;
 }
 .top-right-menu a:hover{
     color:#eab69f;
@@ -121,3 +186,13 @@ body {
     padding: 15px; /* Ajustat pentru a mări zona clicabilă */
     font-weight: bold;
 }
+.footer {
+    background-color: #3d405b; 
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align:center;
+    margin-left: 0;
+    color: #f4f1de;
+  }
