@@ -2,8 +2,7 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
   color: #3d405b;
-  margin-bottom: 20px;
-  margin-top: 0;
+  margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -44,7 +43,7 @@ form {
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 400px;
+  width: 100%; 
   margin-bottom: 20px;
   transition: box-shadow 0.3s ease-in-out;
   text-align: center;
@@ -64,6 +63,7 @@ input[type="submit"] {
   transition: background-color 0.3s ease-in-out;
   font-size: 18px;
   font-weight: bold;
+  width: 100%;
 }
 
 input[type="submit"]:hover {

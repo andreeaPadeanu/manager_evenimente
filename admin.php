@@ -34,46 +34,49 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <p>Bine ați venit !</p>
 
     <!-- Formular pentru adăugarea de evenimente -->
-    <h3>Adăugă un eveniment nou</h3>
     <form method="post" action="adauga_eveniment.php">
         <!-- Adăugați aici câmpurile necesare pentru adăugarea unui eveniment -->
         <input type="submit" name="adauga_eveniment" value="Adăugă un eveniment nou">
     </form>
+    <br>
 
     <!-- Formular pentru editarea de evenimente -->
-    <h3>Editează un eveniment</h3>
     <form method="post" action="editare_eveniment.php">
         <!-- Adăugați aici câmpurile necesare pentru editarea unui eveniment -->
         <input type="submit" name="editeaza_eveniment" value="Editează un eveniment">
     </form>
+    <br>
 
     <!-- Formular pentru ștergerea de evenimente -->
-    <h3>Sterge un eveniment</h3>
     <form method="post" action="sterge_eveniment.php">
         <!-- Adăugați aici câmpurile necesare pentru ștergerea unui eveniment -->
         <input type="submit" name="sterge_eveniment" value="Sterge un eveniment">
     </form>
-    <h3>Adaugă un administrator nou</h3>
+    <br>
+
     <form method="post" action="adauga_ad.php">
         <!-- Adăugați aici câmpurile necesare pentru ștergerea unui eveniment -->
         <input type="submit" name="Adauga administrator nou" value="Adaugă un administrator nou">
     </form>
-    <h3>Adaugă un speaker nou</h3>
+    <br>
+
     <form method="post" action="adauga_speaker.php">
         <!-- Adăugați aici câmpurile necesare pentru ștergerea unui eveniment -->
         <input type="submit" name="Adauga speaker nou" value="Adaugă un speaker nou">
     </form>
-    <h3>Adaugă un sponsor nou</h3>
+    <br>
+
     <form method="post" action="adauga_sponsor.php">
         <!-- Adăugați aici câmpurile necesare pentru ștergerea unui eveniment -->
         <input type="submit" name="Adauga sponsor nou" value="Adaugă un sponsor nou">
     </form>
-    <h3>Adaugă un partener nou</h3>
+    <br>
+
     <form method="post" action="adauga_partener.php">
         <!-- Adăugați aici câmpurile necesare pentru ștergerea unui eveniment -->
         <input type="submit" name="Adauga partener nou" value="Adaugă un partener nou">
     </form>
-    <h3>Trimite invitatii la evenimente</h3>
+    <br>
     <form method="post" action="trimite_invitatie.php">
         <!-- Adăugați aici câmpurile necesare pentru ștergerea unui eveniment -->
         <input type="submit" name="Trimite invitatii " value="Trimite invitatii la evenimente ">
