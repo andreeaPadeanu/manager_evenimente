@@ -36,10 +36,12 @@ $stmt_notificari->bind_result($id_notificare, $mesaj);
 <head>
     <script>
         function toggleMenu() {
-            var menu = document.querySelector('.header .top-right-menu ul');
-            menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+            var menu = document.querySelector('.header .hamburger-menu');
+            menu.classList.toggle('open');
             console.log("Butonul a fost apăsat!");
         }
+
+
     </script>
     <link href="notificari.css" rel="stylesheet" type="text/css">
 </head>
@@ -47,11 +49,30 @@ $stmt_notificari->bind_result($id_notificare, $mesaj);
 <body>
     <header class="header">
         <h3 class="title">Eventica</h3>
+        <br>
+        <h3 class="title">Eventica</h3>
         <div class="icon" onclick="toggleMenu()">
             <div class="bar "></div>
             <div class="bar "></div>
             <div class="bar "></div>
         </div>
+        <div class="hamburger-menu">
+
+            <!-- <button onclick="toggleHamburgerMenu()">☰</button> -->
+
+            <ul id="hamburger-menu">
+                <li><a href="categorii.php">Categorii</a></li>
+                <li><a href="cos.php">Coșul meu</a></li>
+                <li><a href="notificari.php">Notificări</a></li>
+            </ul>
+        </div>
+
+        <!-- <div class="hamburger-icon" onclick="toggleHamburgerMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div> -->
+
 
         <div class="top-right-menu">
             <a href="index.php">Acasă</a>
@@ -61,9 +82,6 @@ $stmt_notificari->bind_result($id_notificare, $mesaj);
     </header>
 
 
-    <div class="title">
-        <h1>Notificări</h1>
-    </div>
 
     <?php
     // Afișează notificările utilizatorului
@@ -80,8 +98,12 @@ $stmt_notificari->bind_result($id_notificare, $mesaj);
         echo "</div>";
     }
     ?>
+    </div>
+    <br><br><br>
+    <div class="footer">
+        <p>&copy;2023 Eventica. Toate drepturile rezervate</p>
+    </div>
 
-    <!-- <a href="index.php" class="footer-link">Înapoi la pagina principală</a> -->
 </body>
 
 </html>

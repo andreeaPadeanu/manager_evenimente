@@ -11,7 +11,7 @@ $user_id = $_SESSION['user_id'];
 
 // Obține evenimentele și tipurile de bilete din baza de date
 $query_evenimente = "SELECT E.ID_eveniment, E.Nume_eveniment, E.Data, E.Ora, E.Locatie, E.Descriere_eveniment, E.Imagine_eveniment
-FROM Eveniment E ORDER BY E.Data DESC, E.Ora DESC";
+FROM Eveniment E ORDER BY E.Data ASC, E.Ora ASC";
 
 
 $result_evenimente = $conn->query($query_evenimente);
@@ -127,7 +127,7 @@ $result_evenimente = $conn->query($query_evenimente);
             </div>
         </div>
 
-    <!-- <div class="footer">
+        <!-- <div class="footer">
         <p>&copy;2023 Eventica. Toate drepturile rezervate</p>
     </div> -->
 

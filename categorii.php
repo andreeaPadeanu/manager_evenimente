@@ -41,31 +41,31 @@ if (!$categorie_selectata && $result_categorii->num_rows > 0) {
                 }
             });
         }
+        function toggleMenu() {
+            var menu = document.querySelector('.hamburger-menu');
+            menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+            console.log("Butonul a fost apăsat!")
+        }
+        function afiseazaEvenimente(categorie) {
+            $.ajax({
+                url: 'categorii.php',
+                type: 'GET',
+                data: { categorie: categorie },
+                success: function (data) {
+                    $('body').html(data);
+                    $('head').append('<link rel="stylesheet" type="text/css" href="index.css">');
+                }
+            });
+        }
     </script>
 
-    <script>
-        function adaugaInCos(evenimentId) {
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "adauga_cos.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    // Afișează răspunsul primit de la server
-                    alert(this.responseText);
-                }
-            };
-            xhttp.send("eveniment_id=" + evenimentId);
-        }
-        function toggleMenu() {
-            var menu = $('.hamburger-menu');
-            menu.css('display', (menu.css('display') === 'none' || menu.css('display') === '') ? 'block' : 'none');
-        }
-    </script>
 </head>
 
 <body>
     <header class="header">
         <h3 class="title">Eventica</h3>
+        <br>
+        <h3 class="title"> Evenimente pe categorii</h3>
         <div class="icon" onclick="toggleMenu()">
             <div class="bar"></div>
             <div class="bar"></div>
@@ -87,8 +87,7 @@ if (!$categorie_selectata && $result_categorii->num_rows > 0) {
 
     <div class="container">
         <div class="content">
-            <h2>Categorii Evenimente</h2>
-            <ul>
+            <ul class="category-list">
                 <?php
                 $result_categorii->data_seek(0);
                 while ($row = $result_categorii->fetch_assoc()) {
@@ -106,6 +105,7 @@ if (!$categorie_selectata && $result_categorii->num_rows > 0) {
                     $stmt->bind_param("s", $categorie_selectata);
                     $stmt->execute();
                     $result_evenimente = $stmt->get_result();
+                    $stmt->close();
 
                     if ($result_evenimente->num_rows > 0) {
                         echo "<h3>Evenimentele în categoria \"$categorie_selectata\"</h3>";

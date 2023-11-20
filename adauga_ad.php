@@ -3,10 +3,25 @@
 
 <head>
     <title>Adaugă un administrator nou</title>
+
+
 </head>
 
 <body>
-    <h2>Adaugă un administrator nou</h2>
+    <header>
+        <div class="header-content">
+            <h1>Nume Companie</h1>
+
+            <div class="top-menu">
+                <div class="top-left-menu">
+                    <!-- Meniul pentru adăugarea administratorului -->
+                    <div class="back-menu">
+                        <a href="admin.php">Înapoi la Panou de Control pentru Administrator</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
     <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Procesați adăugarea unui administrator

@@ -35,12 +35,41 @@ if (isset($_POST['adauga_cos']) && isset($_POST['eveniment_id'])) {
             var costEveniment = cantitate * pret;
             document.getElementById('cost_' + evenimentId).innerHTML = "Costul biletelor: " + costEveniment + " RON";
         }
+        function toggleMenu() {
+            var menu = document.querySelector('.hamburger-menu');
+            menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+            console.log("Butonul a fost apăsat!")
+        }
     </script>
 </head>
 
 <body>
     <header class="header">
         <h3 class="title">Eventica</h3>
+        <h3 class="title">Coșul tău</h3>
+        <div class="icon" onclick="toggleMenu()">
+            <div class="bar "></div>
+            <div class="bar "></div>
+            <div class="bar "></div>
+        </div>
+        <div class="hamburger-menu">
+
+            <!-- <button onclick="toggleHamburgerMenu()">☰</button> -->
+
+            <ul id="hamburger-menu">
+                <li><a href="categorii.php">Categorii</a></li>
+                <li><a href="cos.php">Coșul meu</a></li>
+                <li><a href="notificari.php">Notificări</a></li>
+            </ul>
+        </div>
+
+        <!-- <div class="hamburger-icon" onclick="toggleHamburgerMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div> -->
+
+
         <div class="top-right-menu">
             <a href="index.php">Acasă</a>
             <a href="contul_meu.php">Contul meu</a>
@@ -49,9 +78,6 @@ if (isset($_POST['adauga_cos']) && isset($_POST['eveniment_id'])) {
     </header>
     <div class="container">
         <div class="content">
-            <h2>Coșul tău</h2>
-            <br>
-            <br>
             <ul>
                 <?php
                 // Inițializează costul total
@@ -100,7 +126,7 @@ if (isset($_POST['adauga_cos']) && isset($_POST['eveniment_id'])) {
                     echo "</form>";
                     echo "</div>";
                 } else {
-                    echo "<p>Coșul tău este gol.</p>";
+                    echo "<p class='gol'>Coșul tău este gol.</p>";
                     echo "<div class='button-container'>";
                     echo "<form method='post' action='index.php'>";
                     echo "<button type='submit' class='custom-btn btn-7' name='continua'>Continuă cumpărăturile</button>";
@@ -116,6 +142,7 @@ if (isset($_POST['adauga_cos']) && isset($_POST['eveniment_id'])) {
     <div class="footer">
         <p>&copy;2023 Eventica. Toate drepturile rezervate</p>
     </div>
+
 </body>
 
 </html>
