@@ -81,10 +81,22 @@ if (!is_null($evenimentID)) {
 <html>
 
 <head>
+<link href="editare_eveniment.css" rel="stylesheet" type="text/css">
     <title>Editează un eveniment</title>
 </head>
 
 <body>
+<div class="menu">
+            <div class="top-right-menu">
+                <a href="notificari.php">Notificari </a>
+                <a href="contul_meu.php">Contul Meu</a>
+                <a href="logout.php">Deconectare</a>
+            </div>
+            <div class="top-left-menu">
+                <a href="admin.php">Înapoi la Panou de Control pentru Administrator</a>
+            </div>
+        </div>
+        
     <h2>Editează un eveniment</h2>
     <form method="post" action="editare_eveniment.php">
         <select name="eveniment_selectat" required>

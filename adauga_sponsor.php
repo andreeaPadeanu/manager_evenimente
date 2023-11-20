@@ -35,11 +35,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html>
 
 <head>
+<link href="adauga_sponsor.css" rel="stylesheet" type="text/css">
     <title>Adăugare Sponsor Nou</title>
+    <div class="menu">
+    <div class="top-right-menu">
+                <a href="notificari.php">Notificari </a>
+                <a href="contul_meu.php">Contul Meu</a>
+                <a href="logout.php">Deconectare</a>
+    </div>
+    <div class="top-left-menu">
+                <a href="admin.php">Înapoi la Panou de Control pentru Administrator</a>
+    </div>
+</div>
 </head>
 
 <body>
-    <h2>Adăugă un sponsor nou</h2>
+
+<h2>Adăugă un sponsor nou</h2>
+
+<main>
     <form method="post" action="adauga_sponsor.php">
         <label for="nume_speaker">Numele sponsorului:</label>
         <input type="text" name="nume_spnsor" required><br>
@@ -47,8 +61,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <textarea name="descriere_sponsor"></textarea><br>
         <input type="submit" name="adauga_speaker" value="Adaugă noul sponsor">
     </form>
+</main>
 
-    <a href="admin.php">Înapoi la pagina principală</a>
 </body>
 
 </html>

@@ -54,10 +54,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['adauga_eveniment'])) {
 <html lang="ro">
 
 <head>
+<link href="adauga_eveniment.css" rel="stylesheet" type="text/css">
+
     <title>Adaugă Eveniment</title>
 </head>
 
 <body>
+<header>
+        <div class="top-menu">
+            <div class="top-left-menu">
+                <a href="adauga_partener.php">Adauga Partener</a>
+                <a href="adauga_sponsor.php">Adauga sponsoi</a>
+                <a href="adauga_speaker.php">Adauga Speaker</a>
+            </div>
+            <div class="top-right-menu">
+                <a href="sterge_eveniment">Stergere Eveniment</a>
+                <a href="editare_eveniment.">Editare Eveniment</a>
+                <a href="logout.php">Deconectare</a>
+            </div>
+    </header>
     <h2>Adaugă un eveniment nou</h2>
     <form method="post" action="adauga_eveniment.php">
         <label for="nume_eveniment">Nume eveniment:</label>
@@ -119,9 +134,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['adauga_eveniment'])) {
         <br>
         <input type="submit" name="adauga_eveniment" value="Adaugă eveniment">
     </form>
-    <a href="admin.php">Înapoi la pagina principală</a>
 
-    <!-- Afișează mesajul de confirmare după trimiterea formularului -->
+    <a href="admin.php" class="inapoi">Înapoi la pagina principală</a>
+
 
 </body>
 

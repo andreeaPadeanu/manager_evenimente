@@ -35,10 +35,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html>
 
 <head>
+<link href="adauga_speaker.css" rel="stylesheet" type="text/css">
+
     <title>Adăugă un speaker nou</title>
 </head>
 
 <body>
+<div class="menu">
+            <div class="top-right-menu">
+                <a href="notificari.php">Notificari</a>
+                <a href="contul_meu.php">Contul Meu</a>
+                <a href="logout.php">Deconectare</a>
+            </div>
+            <div class="top-left-menu">
+                <a href="admin.php">Înapoi la Panou de Control pentru Administrator</a>
+            </div>
+        </div>
+
+<main>
     <h2>Adăugă un speaker nou</h2>
     <form method="post" action="adauga_speaker.php">
         <label for="nume_speaker">Numele speaker-ului:</label>
@@ -47,8 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <textarea name="descriere_speaker"></textarea><br>
         <input type="submit" name="adauga_speaker" value="Adaugă Speaker">
     </form>
-
-    <a href="admin.php">Înapoi la pagina principală</a>
+</main>
 </body>
 
 </html>
