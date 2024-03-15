@@ -1,24 +1,33 @@
 <?php
-require('config.php');
-session_start();
+require ('config.php');
 
-if (!isset($_SESSION['user_id'])) {
+function startSessionIfNotStarted()
+{
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+}
+
+if (!defined('PHPUNIT_RUNNING')) {
+    startSessionIfNotStarted();
+}
+
+if (!isset ($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
-if (isset($_POST['eveniment_id'])) {
+if (isset ($_POST['eveniment_id'])) {
     $eveniment_id = $_POST['eveniment_id'];
 
-    // Poți adăuga evenimentul în coș aici (într-o sesiune sau bază de date)
-
-    if (!isset($_SESSION['cos'])) {
+    if (!isset ($_SESSION['cos'])) {
         $_SESSION['cos'] = array();
     }
 
-    // Adaugă evenimentul în coș
-    $_SESSION['cos'][] = $eveniment_id;
-
-    // Poți să trimiți un răspuns către client
-    echo 'Evenimentul a fost adăugat în coș.';
+    if (!in_array($eveniment_id, $_SESSION['cos'])) {
+        $_SESSION['cos'][] = $eveniment_id;
+        echo 'Evenimentul a fost adăugat în coș.';
+    } else {
+        echo 'Evenimentul există deja în coș.';
+    }
 }

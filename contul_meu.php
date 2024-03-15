@@ -1,70 +1,102 @@
 <?php
 session_start();
-require('config.php'); // Conectarea la baza de date
+require('config.php');
 
-if (!isset($_SESSION['user_id'])) {
-    // Dacă utilizatorul nu este autentificat, redirecționează-l către pagina de login
-    header("Location: login.php");
-    exit();
+class Utilizator
+{
+    private $conn;
+    private $nume;
+    private $prenume;
+    private $email;
+    private $telefon;
+
+    public function __construct($conn)
+    {
+        $this->conn = $conn;
+    }
+
+    public function verificaAutentificare()
+    {
+        if (!isset($_SESSION['user_id'])) {
+            header("Location: login.php");
+            exit();
+        }
+    }
+
+    public function obtineDetaliiUtilizator($userID)
+    {
+        $query = "SELECT Nume, Prenume, Email, Telefon FROM User WHERE ID_user = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("i", $userID);
+        $stmt->execute();
+        $stmt->bind_result($this->nume, $this->prenume, $this->email, $this->telefon);
+        $stmt->fetch();
+        $stmt->close();
+
+        return [
+            'nume' => $this->nume,
+            'prenume' => $this->prenume,
+            'email' => $this->email,
+            'telefon' => $this->telefon,
+        ];
+    }
+
+    public function actualizeazaDetaliiUtilizator($userID, $nume, $prenume, $email, $telefon)
+    {
+        $query = "UPDATE User SET Nume = ?, Prenume = ?, Email = ?, Telefon = ? WHERE ID_user = ?";
+        $stmt = $this->conn->prepare($query);
+
+        if ($stmt) {
+            $stmt->bind_param("ssssi", $nume, $prenume, $email, $telefon, $userID);
+            $success = $stmt->execute();
+            $stmt->close();
+
+            return $success;
+        }
+
+        return false;
+    }
 }
 
-$user_id = $_SESSION['user_id'];
+$utilizatorManager = new Utilizator($conn);
+$utilizatorManager->verificaAutentificare();
 
-// Inițializează variabilele pentru datele utilizatorului
 $nume = $prenume = $email = $telefon = "";
 $nume_err = $prenume_err = $email_err = $telefon_err = "";
 
-// Procesează datele atunci când formularul este trimis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validează numele
     if (empty(trim($_POST["nume"]))) {
         $nume_err = "Te rugăm să completezi numele.";
     } else {
         $nume = trim($_POST["nume"]);
     }
 
-    // Validează prenumele
     if (empty(trim($_POST["prenume"]))) {
         $prenume_err = "Te rugăm să completezi prenumele.";
     } else {
         $prenume = trim($_POST["prenume"]);
     }
 
-    // Validează emailul
     if (empty(trim($_POST["email"]))) {
         $email_err = "Te rugăm să completezi adresa de email.";
     } else {
         $email = trim($_POST["email"]);
     }
 
-    // Validează numărul de telefon
     $telefon = trim($_POST["telefon"]);
 
-    // Actualizează datele în baza de date dacă nu există erori
     if (empty($nume_err) && empty($prenume_err) && empty($email_err)) {
-        $query = "UPDATE User SET Nume = ?, Prenume = ?, Email = ?, Telefon = ? WHERE ID_user = ?";
-        if ($stmt = $conn->prepare($query)) {
-            $stmt->bind_param("ssssi", $nume, $prenume, $email, $telefon, $user_id);
-            if ($stmt->execute()) {
-                // Actualizarea a fost reușită
-                header("Location: contul_meu.php");
-            } else {
-                echo "Ceva nu a mers bine. Te rugăm să încerci mai târziu.";
-            }
-            $stmt->close();
+        if ($utilizatorManager->actualizeazaDetaliiUtilizator($user_id, $nume, $prenume, $email, $telefon)) {
+            header("Location: contul_meu.php");
+            exit();
+        } else {
+            echo "Ceva nu a mers bine. Te rugăm să încerci mai târziu.";
         }
     }
 }
 
-// Obține datele utilizatorului din baza de date
-$query = "SELECT Nume, Prenume, Email, Telefon FROM User WHERE ID_user = ?";
-if ($stmt = $conn->prepare($query)) {
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-    $stmt->bind_result($nume, $prenume, $email, $telefon);
-    $stmt->fetch();
-    $stmt->close();
-}
+$detalii_utilizator = $utilizatorManager->obtineDetaliiUtilizator($user_id);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -112,7 +144,6 @@ if ($stmt = $conn->prepare($query)) {
                 <label>Telefon:</label>
                 <input type="text" name="telefon" value="<?php echo $telefon; ?>">
             </div>
-            <!-- !!! echo input <input type="text" name="telefon" value="$telefon"> -->
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Actualizare">
             </div>

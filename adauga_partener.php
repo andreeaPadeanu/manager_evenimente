@@ -18,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->bind_param("ss", $nume_partener, $descriere_partener);
 
             if ($stmt->execute()) {
-                // Redirecționează utilizatorul către o pagină de succes sau afișează un mesaj de succes
                 echo "Partenerul a fost adăugat cu succes!";
             } else {
                 echo "Eroare la adăugarea partenerului.";
@@ -40,19 +39,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
 
-<main>
-    <h2>Adăugă un partener nou</h2>
-    <form method="post" action="adauga_partener.php">
-        <label for="nume_partener">Numele partenerului:</label>
-        <input type="text" name="nume_partener" required><br>
-        <label for="descriere_partener">Descrierea partenerului:</label>
-        <textarea name="descriere_partener"></textarea><br>
-        <input type="submit" name="adauga_partener" value="Adaugă noul partener">
-    </form>
-    <a href="admin.php" class="inapoi">Înapoi la pagina principală</a>
-</main>
+    <main>
+        <h2>Adăugă un partener nou</h2>
+        <form method="post" action="adauga_partener.php">
+            <label for="nume_partener">Numele partenerului:</label>
+            <input type="text" name="nume_partener" required><br>
+            <label for="descriere_partener">Descrierea partenerului:</label>
+            <textarea name="descriere_partener"></textarea><br>
+            <input type="submit" name="adauga_partener" value="Adaugă noul partener">
+        </form>
+        <a href="admin.php" class="inapoi">Înapoi la pagina principală</a>
+    </main>
     <div class="footer">
-        <p>&copy; <?php echo date("Y"); ?>  Eventica. Toate drepturile rezervate</p>
+        <p>&copy;
+            <?php echo date("Y"); ?> Eventica. Toate drepturile rezervate
+        </p>
     </div>
 </body>
 

@@ -16,7 +16,6 @@
 
             <div class="top-menu">
                 <div class="top-left-menu">
-                    <!-- Meniul pentru adăugarea administratorului -->
                     <div class="back-menu">
                         <a href="admin.php">Înapoi la Panou de Control pentru Administrator</a>
                     </div>
@@ -25,15 +24,13 @@
         </div>
     </header>
     <?php
+    require('config.php');
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        // Procesați adăugarea unui administrator
         $nume = $_POST['nume'];
         $prenume = $_POST['prenume'];
         $email = $_POST['email'];
-        $parola = password_hash($_POST['parola'], PASSWORD_DEFAULT); // Criptare parolă
-    
-        // Adăugați administratorul în baza de date (tabelul Admin)
-        require('config.php');
+        $parola = password_hash($_POST['parola'], PASSWORD_DEFAULT);
+
         $query = "INSERT INTO Admin (Nume, Prenume, Email, Parola) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("ssss", $nume, $prenume, $email, $parola);

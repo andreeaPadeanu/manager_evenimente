@@ -1,8 +1,8 @@
 <?php
-require('config.php');
+require ('config.php');
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
+if (!isset ($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
@@ -12,7 +12,7 @@ $user_id = $_SESSION['user_id'];
 $query_categorii = "SELECT DISTINCT Tip FROM Eveniment";
 $result_categorii = $conn->query($query_categorii);
 
-$categorie_selectata = isset($_GET['categorie']) ? $_GET['categorie'] : null;
+$categorie_selectata = isset ($_GET['categorie']) ? $_GET['categorie'] : null;
 
 if (!$categorie_selectata && $result_categorii->num_rows > 0) {
     $row = $result_categorii->fetch_assoc();
@@ -46,17 +46,7 @@ if (!$categorie_selectata && $result_categorii->num_rows > 0) {
             menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
             console.log("Butonul a fost apăsat!")
         }
-        function afiseazaEvenimente(categorie) {
-            $.ajax({
-                url: 'categorii.php',
-                type: 'GET',
-                data: { categorie: categorie },
-                success: function (data) {
-                    $('body').html(data);
-                    $('head').append('<link rel="stylesheet" type="text/css" href="index.css">');
-                }
-            });
-        }
+
     </script>
 
 </head>
@@ -110,7 +100,6 @@ if (!$categorie_selectata && $result_categorii->num_rows > 0) {
                     if ($result_evenimente->num_rows > 0) {
                         echo "<h3>Evenimentele în categoria \"$categorie_selectata\"</h3>";
                         while ($row_eveniment = $result_evenimente->fetch_assoc()) {
-                            // Display event details
                             echo "<div class='eveniment'>";
                             echo "<img src='" . $row_eveniment['Imagine_eveniment'] . "' alt='" . $row_eveniment['Nume_eveniment'] . "'>";
                             echo "<h3>" . $row_eveniment['Nume_eveniment'] . "</h3>";

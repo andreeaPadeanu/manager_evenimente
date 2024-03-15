@@ -1,0 +1,25 @@
+{
+    "titlu_pagina": "Home Page",
+    "mesaj_bine_venit": "Welcome to our website!",
+    "buton_ajutor": "Help",
+    "buton_limba": "Language",
+    "buton_categorii": "Categories",
+    "buton_cos": "My Cart",
+    "buton_notificari": "Notifications",
+    "eveniment": "Event",
+    "data": "Date",
+    "ora": "Time",
+    "locatie": "Location",
+    "descriere": "Description",
+    "buton_adauga_in_cos": "Add to Cart",
+    "contacteaza_ne": "Get in touch with us here",
+    "adresa": "Str x 23 , Cluj Napoca",
+    "telefon": "0123 456 789",
+    "email": "eventica@test.com",
+    "drepturi_rezervate": "&copy;2023 Eventica. All rights reserved",
+    "buton_acasa": "Home",
+    "buton_contul_meu": "My Account",
+    "buton_deconectare": "Logout",
+    "popup_mesaj": "*User Guide for the Event Application*\n\nWelcome to our event application! This guide provides you with essential information to fully enjoy the functionalities offered by our platform. Please go through the details below to successfully navigate and use the application.\n\n### *1. Registration and Login:*\n   - *Registration:*\n     - Access the registration page and fill in the necessary details to create a personal account.\n     - Make sure you provide accurate information to allow full access to the application's functionalities.\n\n   - *Login:*\n     - After registration, access the login page and enter your login details to authenticate into your account.\n\n### *2. Exploring Events:*\n   - *Categories:*\n     - Discover events organized into categories. Navigate according to your interests and explore the available options.\n\n   - *Event Details:*\n     - Access detailed pages of events to get precise information, such as date, location, and description.\n\n### *3. Ticket Purchase:*\n   - *Shopping Cart:*\n     - Add tickets to the shopping cart and adjust the quantity before finalizing the purchase.\n\n   - *Completing the Transaction:*\n     - Follow the simple steps to complete the purchase of tickets and receive transaction confirmation.\n\n### *4. Notifications and Alerts:*\n   - *Event Notifications:*\n     - Receive notifications about events in your categories of interest.\n\n   - *Transaction Alerts:*\n     - Stay updated with the status of your purchases and receive relevant alerts related to transactions.\n\n### *5. User Details Modification:*\n   - *Update Information:*\n     - Access the 'Profile' or 'Settings' section to update personal details, including password and contact information.\n\n### *6. Assistance and Support:*\n   - *Help Section:*\n     - Check the 'Help' section to find answers to frequently asked questions and solutions to common problems.\n\n   - *Contact Support:*\n     - In case of issues, use the contact function to get in touch with our support team.\n\nThank you for using our event application! We aim to provide you with an unforgettable experience in discovering and participating in your favorite events. If you have any questions or feedback, we are here to help!"
+
+}

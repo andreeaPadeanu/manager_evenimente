@@ -18,8 +18,8 @@
             $nume = $_POST['nume'];
             $prenume = $_POST['prenume'];
             $email = $_POST['email'];
-            $parola = password_hash($_POST['parola'], PASSWORD_DEFAULT); // Criptare parolă
-        
+            $parola = password_hash($_POST['parola'], PASSWORD_DEFAULT);
+
             $query = "INSERT INTO User (Nume, Prenume, Email, Parola) VALUES (?, ?, ?, ?)";
             $stmt = $conn->prepare($query);
             $stmt->bind_param("ssss", $nume, $prenume, $email, $parola);

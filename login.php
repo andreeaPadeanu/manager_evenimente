@@ -1,42 +1,61 @@
 <?php
 require('config.php');
 session_start();
+class Autentificare
+{
+    private $conn;
+    private $admin_id = '';
+    private $nume = '';
+    private $prenume = '';
+    private $user_id = '';
+    private $parola_db = '';
+    private $mesaj_eroare = '';
 
-// Verificați dacă utilizatorul este deja autentificat
-if (isset($_SESSION['user_id'])) {
-    header("Location:index.php");
-    exit();
-}
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['conectare'])) {
-        $email = $_POST['email'];
-        $parola = $_POST['parola'];
-
-        // Verificați dacă utilizatorul este un administrator
+    public function __construct($conn)
+    {
+        $this->conn = $conn;
+    }
+    public function verificaAutentificare()
+    {
+        if (isset($_SESSION['user_id'])) {
+            header("Location:index.php");
+            exit();
+        }
+    }
+    public function verificaPostare()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['conectare'])) {
+                $email = $_POST['email'];
+                $parola = $_POST['parola'];
+                $this->verificaAdmin($email, $parola);
+                $this->verificaUtilizator($email, $parola);
+            }
+        }
+    }
+    private function verificaAdmin($email, $parola)
+    {
         $query = "SELECT ID_admin, Nume, Prenume FROM Admin WHERE Email = ? AND Parola = ?";
-        $stmt = $conn->prepare($query);
+        $stmt = $this->conn->prepare($query);
         $stmt->bind_param("ss", $email, $parola);
         $stmt->execute();
-        $stmt->bind_result($admin_id, $nume, $prenume);
-
+        $stmt->bind_result($this->admin_id, $this->nume, $this->prenume);
         if ($stmt->fetch()) {
-            $_SESSION['admin_id'] = $admin_id;
+            $_SESSION['admin_id'] = $this->admin_id;
             header("Location: admin.php");
             exit();
         }
-
-        // Dacă utilizatorul nu este administrator, verificați în tabelul User
+    }
+    private function verificaUtilizator($email, $parola)
+    {
         $query = "SELECT ID_user, Nume, Prenume, Parola FROM User WHERE Email = ?";
-        $stmt = $conn->prepare($query);
+        $stmt = $this->conn->prepare($query);
         $stmt->bind_param("s", $email);
         $stmt->execute();
-        $stmt->bind_result($user_id, $nume, $prenume, $parola_db);
+        $stmt->bind_result($this->user_id, $this->nume, $this->prenume, $this->parola_db);
         $stmt->fetch();
-
-        if (password_verify($parola, $parola_db)) {
-            // Parola este corectă
-            $_SESSION['user_id'] = $user_id;
+        if (password_verify($parola, $this->parola_db)) {
+            $_SESSION['user_id'] = $this->user_id;
             header("Location: index.php");
             exit();
         } else {
@@ -44,7 +63,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 }
-?>
+$autentificare = new Autentificare($conn);
+$autentificare->verificaAutentificare();
+$autentificare->verificaPostare(); ?>
 
 <!DOCTYPE html>
 <html>

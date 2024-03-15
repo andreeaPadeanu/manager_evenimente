@@ -2,12 +2,10 @@
 require('config.php');
 session_start();
 
-// Verifică dacă utilizatorul este autentificat ca administrator
 if (!isset($_SESSION['admin_id'])) {
     header("Location: login.php");
     exit();
 }
-
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['adauga_eveniment'])) {
@@ -22,18 +20,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['adauga_eveniment'])) {
     $partener = $_POST['partener'];
     $pret = $_POST['pret'];
 
-    // Inserează evenimentul în baza de date
+
     $query_insert_eveniment = "INSERT INTO Eveniment (Nume_eveniment, Data, Ora, Tip, Locatie, Descriere_eveniment, Pret) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt_insert_eveniment = $conn->prepare($query_insert_eveniment);
     $stmt_insert_eveniment->bind_param("ssssssd", $nume_eveniment, $data_eveniment, $ora_eveniment, $tip_eveniment, $locatie_eveniment, $descriere_eveniment, $pret);
 
     if ($stmt_insert_eveniment->execute()) {
 
-
-
         $last_event_id = $conn->insert_id;
 
-        // Actualizează evenimentul cu sponsorul, speakerul și partenerul selectați
         $query_update_eveniment = "UPDATE Eveniment SET ID_sponsor = (SELECT ID_sponsor FROM Sponsor WHERE Nume = ?), 
                                                             ID_speaker = (SELECT ID_speaker FROM Speaker WHERE Nume = ?), 
                                                             ID_partener = (SELECT ID_partener FROM Partener WHERE Nume = ?) 
@@ -54,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['adauga_eveniment'])) {
 <html lang="ro">
 
 <head>
-<link href="adauga_eveniment.css" rel="stylesheet" type="text/css">
+    <link href="adauga_eveniment.css" rel="stylesheet" type="text/css">
 
     <title>Adaugă Eveniment</title>
 </head>

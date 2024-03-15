@@ -114,7 +114,6 @@ display:none;
 }
 
 .social-media {
-  /* margin-bottom: 20px; */
   text-align: left;
 }
 
@@ -126,7 +125,6 @@ display:none;
 }
 
 .contact-info p {
-  /* margin: 5px 0; */
   text-align: right;
   margin-right: 45px;
   color: #3d405b;
@@ -164,7 +162,7 @@ display:none;
 .eveniment img {
   max-width: 100%;
   border-radius: 8px;
-  margin-bottom: 10px; /* spațiu între imagine și text */
+  margin-bottom: 10px; 
 }
 
 .eveniment a {
